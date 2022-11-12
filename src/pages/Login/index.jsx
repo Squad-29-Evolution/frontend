@@ -1,8 +1,10 @@
 import S from "./style";
 import Logo from "../../assets/logo_orange.svg";
 import Form from "./components/Form";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Login = () => {
+  useDocumentTitle("Login");
   return (
     <>
       <S.PersonsBG />
