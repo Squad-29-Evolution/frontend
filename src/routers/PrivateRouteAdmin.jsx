@@ -1,10 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = () => {
-  const user = "USER";
-  const isAdmin = user == "ADMIN";
-  const isLoading = false;
+  const { authUser, getUserInfo } = useAuth();
+  const user = getUserInfo();
+  const { isLoading } = authUser;
+
+  const isAdmin = user.role === "ADMIN";
 
   if (isLoading) return <Loading />;
 

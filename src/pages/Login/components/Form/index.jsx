@@ -7,9 +7,13 @@ import ButtonLabel from "../../../../components/ButtonLabel";
 import api from "../../../../api";
 import { useState } from "react";
 import Loading from "../../../../components/Loading";
+import useAuth from "../../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { salveUserInfo } = useAuth();
 
   const {
     register,
@@ -21,8 +25,15 @@ const Form = () => {
 
   const onSubmit = async (formData) => {
     setIsLoading(true);
-    const { data } = await api.post("/users/login", formData);
-    console.log(data);
+    try {
+      const { data } = await api.post("/users/login", formData);
+      salveUserInfo(data, data.token);
+
+      return navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+
     setIsLoading(false);
   };
 

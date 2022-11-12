@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import RecoveryPass from "../pages/RecoveryPass";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
+import HomeAdmin from "../pages/HomeAdmin";
 
 const Routers = () => {
   return (
@@ -16,7 +17,9 @@ const Routers = () => {
         </Route>
 
         {/* admin routes */}
-        <Route element={<PrivateRouteAdmin />}></Route>
+        <Route element={<PrivateRouteAdmin />}>
+          <Route path="/dashboad" element={<HomeAdmin />} />
+        </Route>
 
         {/* public routes */}
         <Route path="/login" element={<Login />} />
