@@ -52,6 +52,7 @@ const ContentBox = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 10px;
 `;
 
 const Text = styled.p`

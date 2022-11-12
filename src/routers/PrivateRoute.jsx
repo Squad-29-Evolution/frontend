@@ -1,9 +1,10 @@
 import { Outlet, Navigate } from "react-router-dom";
-import Loading from "../Loading";
+import Loading from "../components/Loading";
+import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = () => {
-  const isUser = true;
-  const isLoading = true;
+  const { authUser } = useAuth();
+  const { isLoading, isUser } = authUser;
 
   if (isLoading) return <Loading />;
 

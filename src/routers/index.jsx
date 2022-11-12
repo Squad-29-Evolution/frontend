@@ -3,15 +3,22 @@ import Home from "../pages/home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import RecoveryPass from "../pages/RecoveryPass";
-import PrivateRoute from "../components/PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
+import PrivateRouteAdmin from "./PrivateRouteAdmin";
 
 const Routers = () => {
   return (
     <Router>
       <Routes>
+        {/* user routes */}
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
         </Route>
+
+        {/* admin routes */}
+        <Route element={<PrivateRouteAdmin />}></Route>
+
+        {/* public routes */}
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/recoverypass" element={<RecoveryPass />} />
