@@ -6,6 +6,7 @@ import RecoveryPass from "../pages/RecoveryPass";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
 import HomeAdmin from "../pages/HomeAdmin";
+import PrivateArea from "../components/PrivateArea";
 
 const Routers = () => {
   return (
@@ -13,7 +14,9 @@ const Routers = () => {
       <Routes>
         {/* user routes */}
         <Route element={<PrivateRoute />}>
-          <Route path="/" element={<Home />} />
+          <Route element={<PrivateArea />}>
+            <Route path="/" element={<Home />} />
+          </Route>
         </Route>
 
         {/* admin routes */}
