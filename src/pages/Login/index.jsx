@@ -4,15 +4,21 @@ import Form from "./components/Form";
 
 const Login = () => {
   return (
-    <S.Container>
-      <S.BackgroundLinear>
-        <S.Logo>
-          <img src={Logo} alt="logo orange" />
-        </S.Logo>
-      </S.BackgroundLinear>
-      <S.Header />
-      <Form />
-    </S.Container>
+    <>
+      <S.PersonsBG />
+      <S.StudentBG />
+      <S.PersonWithNotBG />
+      <S.DateBG />
+      <S.Container>
+        <S.BackgroundLinear />
+        <S.Header>
+          <S.Logo>
+            <img src={Logo} alt="logo orange" />
+          </S.Logo>
+        </S.Header>
+        <Form />
+      </S.Container>
+    </>
   );
 };
 
