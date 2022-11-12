@@ -29,7 +29,7 @@ const Form = () => {
               type="text"
               register={register}
               name={"email"}
-              label={"E-mail ou ID"}
+              label={"E-mail"}
             />
           </S.GenericContainer>
 
