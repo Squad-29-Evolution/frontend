@@ -50,7 +50,8 @@ const InputContainer = styled.div`
 
 const GenericContainer = styled.div`
   width: 100%;
-  margin-bottom: 33px;
+  margin-bottom: 35px;
+  position: relative;
 `;
 
 const RecoveryPassword = styled(Link)`
@@ -62,7 +63,7 @@ const RecoveryPassword = styled(Link)`
   font-weight: 500;
   font-family: "Metropolis", sans-serif;
   position: relative;
-  top: 10px;
+  top: 16px;
   font-size: 1.1rem;
 `;
 
@@ -83,6 +84,19 @@ const Span = styled(Link)`
   font-family: inherit;
 `;
 
+const SpanError = styled.span`
+  font-family: "Metropolis", sans-serif;
+  font-weight: 400;
+  position: absolute;
+  font-size: 0.8rem;
+  color: red;
+  bottom: 1px;
+
+  &.email {
+    bottom: -17px;
+  }
+`;
+
 export default {
   Container,
   Form,
@@ -92,4 +106,5 @@ export default {
   RecoveryPassword,
   CreateAccount,
   Span,
+  SpanError,
 };

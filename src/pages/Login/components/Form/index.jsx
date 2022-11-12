@@ -4,20 +4,30 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./validation";
 import InputLabel from "../../../../components/InputLabel";
 import ButtonLabel from "../../../../components/ButtonLabel";
+import api from "../../../../api";
+import { useState } from "react";
 
 const Form = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
-    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = () => {
-    console.log("foi");
+  const onSubmit = async (formData) => {
+    setIsLoading(true);
+    const { data } = await api.post("/users/login", formData);
+    console.log(data);
+    setIsLoading(false);
   };
+
+  if (isLoading) {
+    return <p>Carregando</p>;
+  }
 
   return (
     <S.Container>
@@ -31,6 +41,7 @@ const Form = () => {
               name={"email"}
               label={"E-mail"}
             />
+            <S.SpanError className="email">{errors.email?.message}</S.SpanError>
           </S.GenericContainer>
 
           <S.GenericContainer>
@@ -40,8 +51,10 @@ const Form = () => {
               name={"password"}
               label={"Senha"}
             />
+            <S.SpanError>{errors.password?.message}</S.SpanError>
             <S.RecoveryPassword to="/">Esqueceu a senha?</S.RecoveryPassword>
           </S.GenericContainer>
+
           <ButtonLabel type="submit">Entrar</ButtonLabel>
           <S.CreateAccount>
             Ainda não tem uma conta? <S.Span to="/">Registre-se</S.Span>
