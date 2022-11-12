@@ -52,7 +52,9 @@ const Form = () => {
               label={"Senha"}
             />
             <S.SpanError>{errors.password?.message}</S.SpanError>
-            <S.RecoveryPassword to="/">Esqueceu a senha?</S.RecoveryPassword>
+            <S.RecoveryPassword to="/recoverypass">
+              Esqueceu a senha?
+            </S.RecoveryPassword>
           </S.GenericContainer>
 
           <ButtonLabel type="submit">Entrar</ButtonLabel>
