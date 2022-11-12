@@ -29,7 +29,7 @@ export const AuthContextProvide = ({ children }) => {
         validToken: true,
         token: token,
         user: {
-          username: data.name,
+          name: data.name,
           picture: "https://avatars.dicebear.com/api/micah/asaaaaa.svg",
           id: data.id,
           xp: data.xp,
