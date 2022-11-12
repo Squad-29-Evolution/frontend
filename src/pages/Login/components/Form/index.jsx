@@ -9,11 +9,25 @@ import { useState } from "react";
 import Loading from "../../../../components/Loading";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { salveUserInfo } = useAuth();
+
+  const notify = () =>
+    toast.error("Email ou senha invalidos", {
+      position: "top-right",
+      autoClose: 1800,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   const {
     register,
@@ -32,6 +46,7 @@ const Form = () => {
       return navigate("/");
     } catch (error) {
       console.log(error);
+      notify();
     }
 
     setIsLoading(false);
@@ -43,6 +58,7 @@ const Form = () => {
 
   return (
     <S.Container>
+      <ToastContainer />
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Title>Bem vinda(o) de volta!</S.Title>
         <S.InputContainer>
