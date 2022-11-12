@@ -6,9 +6,10 @@ import InputLabel from "../../../../components/InputLabel";
 import ButtonLabel from "../../../../components/ButtonLabel";
 import api from "../../../../api";
 import { useState } from "react";
+import Loading from "../../../../components/Loading";
 
 const Form = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     register,
@@ -26,7 +27,7 @@ const Form = () => {
   };
 
   if (isLoading) {
-    return <p>Carregando</p>;
+    return <Loading />;
   }
 
   return (
