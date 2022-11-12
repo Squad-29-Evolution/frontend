@@ -9,7 +9,7 @@ import { useState } from "react";
 import Loading from "../../../../components/Loading";
 
 const Form = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
