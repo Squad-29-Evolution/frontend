@@ -1,8 +1,11 @@
 import Form from "./components/Form";
 import Logo from "../../assets/logo_orange.svg";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 import S from "./style";
 
 const Register = () => {
+  useDocumentTitle("Register");
+
   return (
     <>
       <S.OrangeKawaii2BG />
