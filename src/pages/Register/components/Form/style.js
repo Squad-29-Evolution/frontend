@@ -14,6 +14,12 @@ const Container = styled.main`
   }
 `;
 
+const GenericContainer = styled.div`
+  width: 100%;
+  /* margin-bottom: 35px; */
+  position: relative;
+`;
+
 const Form = styled.form`
   width: 100%;
   height: 100%;
@@ -30,6 +36,10 @@ const SpanError = styled.span`
   font-size: 0.8rem;
   color: red;
   bottom: 1px;
+
+  &.error {
+    bottom: -19px;
+  }
 `;
 
 const CreateAccount = styled.p`
@@ -48,4 +58,11 @@ const Span = styled(Link)`
   font-family: inherit;
 `;
 
-export default { Container, Form, SpanError, CreateAccount, Span };
+export default {
+  Container,
+  Form,
+  GenericContainer,
+  SpanError,
+  CreateAccount,
+  Span,
+};
