@@ -8,6 +8,7 @@ import PrivateRouteAdmin from "./PrivateRouteAdmin";
 import HomeAdmin from "../pages/HomeAdmin";
 import PrivateArea from "../components/PrivateArea";
 import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
+import Register from "../pages/Register";
 
 const Routers = () => {
   return (
@@ -29,6 +30,7 @@ const Routers = () => {
 
         {/* public routes */}
         <Route path="/login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/recoverypass" element={<RecoveryPass />} />
       </Routes>

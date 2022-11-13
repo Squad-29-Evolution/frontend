@@ -87,7 +87,7 @@ const Form = () => {
 
           <ButtonLabel type="submit">Entrar</ButtonLabel>
           <S.CreateAccount>
-            Ainda não tem uma conta? <S.Span to="/">Registre-se</S.Span>
+            Ainda não tem uma conta? <S.Span to="/register">Registre-se</S.Span>
           </S.CreateAccount>
         </S.InputContainer>
       </S.Form>

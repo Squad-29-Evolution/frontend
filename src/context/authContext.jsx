@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { getToken, setToken } from "../utils/authToken";
+import { getToken, setToken, removeToken } from "../utils/authToken";
 import api from "../api";
 
 export const AuthContext = createContext({});
@@ -64,6 +64,7 @@ export const AuthContextProvide = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
+      removeToken();
       return setAuthUser({
         ...authUser,
         isUser: false,
