@@ -23,6 +23,8 @@ const Members = () => {
   });
   const [data, setData] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [inpuValue, setInputValue] = useState("");
+  const [searchData, setSearchData] = useState([]);
 
   const setTotalMember = (data) => {
     const totalUser = data.filter((user) => {
@@ -57,6 +59,20 @@ const Members = () => {
 
   const closeModal = () => {
     setIsOpenModal(false);
+  };
+
+  const parserToLowerCase = (string) => {
+    return string.toLowerCase();
+  };
+
+  const searchFunction = () => {
+    const lowerCaseInput = parserToLowerCase(inpuValue);
+    const filterData = data.filter((user) => {
+      const { email } = user;
+      const lowerCaseEmail = parserToLowerCase(email);
+      return lowerCaseEmail.includes(lowerCaseInput);
+    });
+    return setSearchData(filterData);
   };
 
   useEffect(() => {
@@ -97,11 +113,19 @@ const Members = () => {
 
       <S.WrapperGeneric className="fixed">
         <WrapperCount usersCount={usersCount} />
-        <SearchBar />
+        <SearchBar
+          inpuValue={inpuValue}
+          setInputValue={setInputValue}
+          onKeyUp={searchFunction}
+        />
       </S.WrapperGeneric>
 
       <S.WrapperGeneric>
-        <Table data={data} />
+        {searchData.length > 0 ? (
+          <Table data={searchData} />
+        ) : (
+          <Table data={data} />
+        )}
       </S.WrapperGeneric>
     </S.Container>
   );

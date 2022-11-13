@@ -102,6 +102,16 @@ const Span = styled.span`
   color: #e5e5e5;
 `;
 
+const NotUsers = styled.div`
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  & p {
+    color: #e5e5e5;
+    font-size: 1.2rem;
+  }
+`;
+
 export default {
   ContainerOverFlow,
   Table,
@@ -115,4 +125,5 @@ export default {
   Btext,
   ContentInfo,
   Span,
+  NotUsers,
 };

@@ -14,14 +14,13 @@ const Modal = ({ closeModal, setData, notify, token }) => {
 
   const onSubmit = async (formData) => {
     //setIsLoading(true);
-    console.log(formData);
 
     try {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
       const { data } = await api.post("/admin/create", formData, config);
-      console.log(data);
+
       const { name, email, picture, role, id } = data;
       setData((prev) => [...prev, { name, email, picture, role, id }]);
       notify("success", "Administrador criado com sucesso");
