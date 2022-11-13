@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 const headerCss = css`
   width: 100%;
   height: 76px;
-  background: #2e2e2e;
+  background-color: transparent;
+  z-index: 3;
 `;
 
 const Container = styled.header`
@@ -19,14 +20,25 @@ const FixedHeader = styled.div`
   align-items: center;
 `;
 
+const Generic = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Logo = styled.div`
   max-width: 71px;
   max-height: 52px;
+  margin-left: 20px;
 
   & img {
-    width: 100%
-    height: 100%
-}
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 800px) {
+    max-width: 51px;
+    max-height: 50px;
+  }
 `;
 
-export default { Container, FixedHeader, Logo };
+export default { Container, FixedHeader, Logo, Generic };

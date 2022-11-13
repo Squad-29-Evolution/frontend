@@ -5,9 +5,11 @@ import NotFound from "../pages/NotFound";
 import RecoveryPass from "../pages/RecoveryPass";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
-import HomeAdmin from "../pages/HomeAdmin";
+import Members from "../pages/Members";
 import PrivateArea from "../components/PrivateArea";
+import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
 import Register from "../pages/Register";
+import Logout from "../pages/Logout";
 
 const Routers = () => {
   return (
@@ -22,11 +24,14 @@ const Routers = () => {
 
         {/* admin routes */}
         <Route element={<PrivateRouteAdmin />}>
-          <Route path="/dashboad" element={<HomeAdmin />} />
+          <Route path="/admin" element={<PrivateAreaAdmin />}>
+            <Route path="/admin/members" element={<Members />} />
+          </Route>
         </Route>
 
         {/* public routes */}
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/recoverypass" element={<RecoveryPass />} />

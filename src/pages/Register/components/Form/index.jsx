@@ -88,7 +88,7 @@ const Form = () => {
             name={"password"}
             label={"Senha"}
           />
-          <S.SpanError className="error">{errors.email?.message}</S.SpanError>
+          <S.SpanError className="error">{errors.password?.message}</S.SpanError>
         </S.GenericContainer>
 
         <ButtonLabel type="submit">Cadastrar</ButtonLabel>

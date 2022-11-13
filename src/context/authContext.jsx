@@ -5,6 +5,7 @@ import api from "../api";
 export const AuthContext = createContext({});
 
 export const AuthContextProvide = ({ children }) => {
+  console.log("atualizou");
   //TODO: refazer ess hook e  criar funções especifica para cada ação
   const [authUser, setAuthUser] = useState({
     isLoading: true,
@@ -30,13 +31,31 @@ export const AuthContextProvide = ({ children }) => {
         token: token,
         user: {
           name: data.name,
-          picture: "https://avatars.dicebear.com/api/micah/asaaaaa.svg",
+          picture: data.picture,
           id: data.id,
           xp: data.xp,
           role: data.role,
         },
       };
     });
+  };
+
+  const removeUserInfo = () => {
+    removeToken();
+    setAuthUser((prev) => ({
+      ...prev,
+      isLoading: true,
+      isUser: false,
+      validToken: false,
+      token: null,
+      user: {
+        name: null,
+        picture: null,
+        id: null,
+        xp: null,
+        role: null,
+      },
+    }));
   };
 
   const getUserInfo = () => {
@@ -55,6 +74,12 @@ export const AuthContextProvide = ({ children }) => {
 
         const { data } = await api.get(`/users/${id}`, config);
         //console.log(data);
+        // eslint-disable-next-line no-unused-vars
+        const { data: dataXp } = await api.post(
+          "/dates/salve",
+          { uuid: id },
+          config,
+        );
 
         return salveUserInfo(data, isToken);
       }
@@ -86,7 +111,13 @@ export const AuthContextProvide = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={[authUser, getUserInfo, salveUserInfo, setAuthUser]}
+      value={[
+        authUser,
+        getUserInfo,
+        salveUserInfo,
+        setAuthUser,
+        removeUserInfo,
+      ]}
     >
       {children}
     </AuthContext.Provider>

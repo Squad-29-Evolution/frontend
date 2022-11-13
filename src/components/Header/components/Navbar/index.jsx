@@ -1,7 +1,7 @@
 import S from "./style";
 import useAuth from "../../../../hooks/useAuth";
 
-const Navbar = () => {
+const Navbar = ({ admin }) => {
   const { getUserInfo } = useAuth();
 
   const { picture, name, role } = getUserInfo();
@@ -12,23 +12,25 @@ const Navbar = () => {
 
   return (
     <S.Container>
-      <S.Nav>
-        <S.NavList>
-          <S.NavItem>
-            <S.NavLink to="/">Inicio</S.NavLink>
-          </S.NavItem>
-
-          <S.NavItem>
-            <S.NavLink to="/">Comunidade</S.NavLink>
-          </S.NavItem>
-
-          {role === "ADMIN" && (
+      {!admin && (
+        <S.Nav>
+          <S.NavList>
             <S.NavItem>
-              <S.NavLink to="/dashboad">Administração</S.NavLink>
+              <S.NavLink to="/">Inicio</S.NavLink>
             </S.NavItem>
-          )}
-        </S.NavList>
-      </S.Nav>
+
+            <S.NavItem>
+              <S.NavLink to="/">Comunidade</S.NavLink>
+            </S.NavItem>
+
+            {role === "ADMIN" && (
+              <S.NavItem>
+                <S.NavLink to="/admin/members">Administração</S.NavLink>
+              </S.NavItem>
+            )}
+          </S.NavList>
+        </S.Nav>
+      )}
 
       <S.UserInfos>
         <S.UserPicture>
