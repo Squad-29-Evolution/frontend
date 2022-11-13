@@ -5,6 +5,7 @@ const SearchBar = () => {
   return (
     <S.Label>
       <img src={Search} alt="lupa" />
+      <S.Input></S.Input>
     </S.Label>
   );
 };

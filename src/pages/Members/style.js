@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   z-index: 3;
-  background-color: transparent;
+  padding: 10px;
 `;
 
 const NewButton = styled.button`
@@ -19,6 +18,7 @@ const NewButton = styled.button`
 const WrapperGeneric = styled.div`
   max-width: 739px;
   width: 100%;
+
   margin: 0 auto;
 `;
 

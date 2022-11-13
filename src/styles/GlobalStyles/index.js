@@ -19,6 +19,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
+  background-color: #2e2e2e; ;
 }
 
 ol, ul {
