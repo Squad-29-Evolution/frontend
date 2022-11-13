@@ -88,6 +88,24 @@ const MenuConfig = styled.div`
 
 const Item = styled.li`
   margin: 10px 0;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 0;
+    bottom: -5px;
+    background: linear-gradient(180deg, #ff8507 0%, #ff5a23 100%);
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+      left: 2px;
+      transition: width 100ms ease-in-out;
+    }
+  }
 `;
 
 const MenuLink = styled(Link)`
