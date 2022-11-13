@@ -2,6 +2,10 @@ import LevelBadge from "./components/LevelBadge";
 import Arrow from "../../assets/arrow.svg";
 import S from "./style";
 import CourseBadge from "./components/CourseBadge";
+import BadgeLink from "./components/BadgeLink";
+import UX from "../../assets/Intelligence.svg";
+import DEV from "../../assets/code.svg";
+import QA from "../../assets/quality.svg";
 
 const Home = () => {
   return (
@@ -10,9 +14,7 @@ const Home = () => {
         <LevelBadge />
         <S.CoursesSection>
           <S.HeaderCoursesSection>
-            <S.TitleHeaderCoursesSection>
-              Meus Cursos
-            </S.TitleHeaderCoursesSection>
+            <S.TitleHeader>Meus Cursos</S.TitleHeader>
             <S.LinkHeaderCoursesSection>
               Ver mais
               <S.ImgArrow src={Arrow} alt="Ícone de ver mais" />
@@ -25,6 +27,14 @@ const Home = () => {
             <CourseBadge title="Cloud" percent={90} />
           </S.ViewCourses>
         </S.CoursesSection>
+        <S.TrailsSection>
+          <S.TitleHeader>Trilhas</S.TitleHeader>
+          <S.ViewTrails>
+            <BadgeLink img={UX} title="UX/UI Design" />
+            <BadgeLink img={DEV} title="DEV" />
+            <BadgeLink img={QA} title="QA" />
+          </S.ViewTrails>
+        </S.TrailsSection>
       </S.ContentSection>
       <S.CalendarSection>Calendário</S.CalendarSection>
     </S.Container>

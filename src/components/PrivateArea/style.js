@@ -8,7 +8,6 @@ const Container = styled.div`
 
 const Main = styled.main`
   width: 100%;
-  height: calc(100% - 76px);
   display: flex;
 `;
 
