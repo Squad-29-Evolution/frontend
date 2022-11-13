@@ -6,4 +6,16 @@ const Container = styled.div`
   width: 100%;
 `;
 
-export default { Container };
+const Main = styled.main`
+  width: 100%;
+  height: calc(100% - 76px);
+  display: flex;
+`;
+
+const ContentOutlet = styled.div`
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+
+export default { Container, ContentOutlet, Main };

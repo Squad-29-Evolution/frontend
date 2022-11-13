@@ -7,10 +7,12 @@ const PrivateArea = () => {
   return (
     <S.Container>
       <Header />
-      <main>
+      <S.Main>
         <Sidebar />
-        <Outlet />
-      </main>
+        <S.ContentOutlet>
+          <Outlet />
+        </S.ContentOutlet>
+      </S.Main>
     </S.Container>
   );
 };
