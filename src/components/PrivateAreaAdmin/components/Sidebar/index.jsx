@@ -26,28 +26,32 @@ const Sidebar = ({ isOpen, closedModal }) => {
             <S.MenuList>
               <S.Item>
                 <S.MenuLink to="/admin/members">
-                  <img className="member" src={MemberIcon} alt="member icon" />
+                  <img
+                    className="member"
+                    src={MemberIcon}
+                    alt="icone de membros"
+                  />
                   Membros
                 </S.MenuLink>
               </S.Item>
 
               <S.Item>
                 <S.MenuLink>
-                  <img src={CourseIcon} alt="member icon" />
+                  <img src={CourseIcon} alt="icone de curos" />
                   Cursos
                 </S.MenuLink>
               </S.Item>
 
               <S.Item>
                 <S.MenuLink>
-                  <img src={ContentIcon} alt="" />
+                  <img src={ContentIcon} alt="icone de conteudo" />
                   Conteúdo
                 </S.MenuLink>
               </S.Item>
 
               <S.Item>
                 <S.MenuLink>
-                  <img src={CommentIcon} alt="" />
+                  <img src={CommentIcon} alt=" icone de comentario" />
                   Comentários
                 </S.MenuLink>
               </S.Item>
@@ -56,13 +60,14 @@ const Sidebar = ({ isOpen, closedModal }) => {
             <S.MenuConfig>
               <S.Item>
                 <S.MenuLink>
-                  <img src={SettingIcon} alt="" /> Configuração
+                  <img src={SettingIcon} alt="icone de configuração" />{" "}
+                  Configuração
                 </S.MenuLink>
               </S.Item>
 
               <S.Item>
-                <S.MenuLink>
-                  <img src={ExitIcon} alt="" />
+                <S.MenuLink to="/logout">
+                  <img src={ExitIcon} alt="icone de sair" />
                   Sair
                 </S.MenuLink>
               </S.Item>

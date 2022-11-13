@@ -8,7 +8,7 @@ const schema = yup
       .required("Esse campo é obrigatório"),
     password: yup
       .string()
-      .min(4, "Mínimo de 6 caracteres")
+      .min(6, "Mínimo de 6 caracteres")
       .max(30, "Tamanho maximo da senha: 30")
       .required("Esse campo é obrigatório"),
   })
