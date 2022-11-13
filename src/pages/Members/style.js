@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 const Container = styled.div`
   width: 100%;
@@ -22,8 +23,13 @@ const WrapperGeneric = styled.div`
   margin: 0 auto;
 `;
 
+const ToastContainerCss = styled(ToastContainer)`
+  z-index: 999;
+`;
+
 export default {
   Container,
   NewButton,
   WrapperGeneric,
+  ToastContainerCss,
 };

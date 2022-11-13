@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 600px;
-  height: 400px;
   border-radius: 10px;
   background: linear-gradient(180deg, #ff8507 0%, #ff5a23 100%);
   position: fixed;
@@ -30,4 +29,58 @@ const Title = styled.div`
   margin-bottom: 20px;
 `;
 
-export default { Container, BG, Title };
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const WrapperGeneric = styled.div`
+  width: 100%;
+  padding: 20px;
+  position: relative;
+
+  & input {
+    outline: none;
+    border-radius: 10px;
+    background: #2e2e2ea3;
+  }
+`;
+
+const WrapperButton = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  margin: 10px 0;
+`;
+
+const Button = styled.button`
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #e5e5e5;
+  padding: 10px;
+  background: #2e2e2e;
+  cursor: pointer;
+  width: 100%;
+  margin: 0 10px;
+`;
+
+const SpanError = styled.span`
+  font-weight: 400;
+  position: absolute;
+  font-size: 0.8rem;
+  color: red;
+  bottom: 1px;
+`;
+
+export default {
+  Container,
+  BG,
+  Title,
+  WrapperGeneric,
+  Button,
+  Form,
+  WrapperButton,
+  SpanError,
+};

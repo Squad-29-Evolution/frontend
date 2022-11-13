@@ -1,7 +1,30 @@
 import S from "./style";
 
 const Table = ({ data }) => {
-  console.log();
+  console.log(data);
+
+  const setDate = (date) => {
+    const dateNotFormat = new Date(date);
+    const day = dateNotFormat.getDate();
+    const year = dateNotFormat.getFullYear(),
+      monthNames = [
+        "Jan",
+        "Fev",
+        "Mar",
+        "Abr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Out",
+        "Nov",
+        "Dez",
+      ];
+
+    return `${day}  ${monthNames[dateNotFormat.getMonth()]}, ${year}`;
+  };
+
   return (
     <S.ContainerOverFlow>
       <S.Table>
@@ -37,7 +60,11 @@ const Table = ({ data }) => {
               </S.BContent>
 
               <S.BContent>
-                <S.Btext>6 Out, 2022</S.Btext>
+                <S.Btext>
+                  {user.Dates[0]?.date
+                    ? setDate(user.Dates[0]?.date)
+                    : "Sem atividade"}
+                </S.Btext>
               </S.BContent>
             </S.BRow>
           ))}

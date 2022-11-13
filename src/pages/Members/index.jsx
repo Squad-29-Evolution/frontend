@@ -8,6 +8,7 @@ import api from "../../api/index";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading";
 import Modal from "./components/Modal";
+import { toast } from "react-toastify";
 
 const Members = () => {
   useDocumentTitle("Membros");
@@ -21,6 +22,7 @@ const Members = () => {
     admin: 0,
   });
   const [data, setData] = useState([]);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const setTotalMember = (data) => {
     const totalUser = data.filter((user) => {
@@ -49,9 +51,30 @@ const Members = () => {
     setIsLoading(false);
   };
 
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
+
   useEffect(() => {
     getAllusers();
   }, []);
+
+  const notify = (type, message) =>
+    toast[type](message, {
+      position: "bottom-left",
+      autoClose: 1400,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      index: 5,
+    });
 
   if (isLoading) {
     return <Loading />;
@@ -59,8 +82,18 @@ const Members = () => {
 
   return (
     <S.Container>
-      <Modal />
-      <S.NewButton>+ Adicionar novo administrador</S.NewButton>
+      <S.ToastContainerCss />
+      {isOpenModal && (
+        <Modal
+          setData={setData}
+          closeModal={closeModal}
+          notify={notify}
+          token={token}
+        />
+      )}
+      <S.NewButton type="button" onClick={openModal}>
+        + Adicionar novo administrador
+      </S.NewButton>
 
       <S.WrapperGeneric className="fixed">
         <WrapperCount usersCount={usersCount} />
