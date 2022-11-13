@@ -8,10 +8,14 @@ const Container = styled.div`
   grid-template-columns: 3fr 1.5fr;
   background-color: #2e2e2e;
   padding: 15px 0;
+
+  @media (max-width: 1070px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ContentSection = styled.section`
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,9 +80,7 @@ const ViewTrails = styled.div`
   margin-top: 10px;
 `;
 
-const CalendarSection = styled.section`
-  /* background-color: green; */
-`;
+const CalendarSection = styled.section``;
 
 export default {
   Container,

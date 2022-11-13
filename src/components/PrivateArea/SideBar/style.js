@@ -11,7 +11,7 @@ const NavCss = css`
 const Container = styled.div`
   ${NavCss}
 
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     max-width: 0;
 
     &.active {
@@ -30,7 +30,7 @@ const Navbar = styled.div`
   top: 0;
   height: 100vh;
 
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     max-width: 0;
     height: 0;
 
@@ -55,7 +55,7 @@ const CloseButton = styled.button`
     height: 35px;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     &.active {
       display: block;
     }
