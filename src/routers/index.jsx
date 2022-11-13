@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
 import HomeAdmin from "../pages/HomeAdmin";
 import PrivateArea from "../components/PrivateArea";
+import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
 
 const Routers = () => {
   return (
@@ -21,7 +22,9 @@ const Routers = () => {
 
         {/* admin routes */}
         <Route element={<PrivateRouteAdmin />}>
-          <Route path="/dashboad" element={<HomeAdmin />} />
+          <Route element={<PrivateAreaAdmin />}>
+            <Route path="/dashboad" element={<HomeAdmin />} />
+          </Route>
         </Route>
 
         {/* public routes */}
