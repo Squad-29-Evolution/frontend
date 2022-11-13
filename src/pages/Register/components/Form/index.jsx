@@ -61,29 +61,35 @@ const Form = () => {
     <S.Container>
       <ToastContainer />
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <InputLabel
-          type="text"
-          register={register}
-          name={"name"}
-          label={"Nome"}
-        />
-        <S.SpanError>{errors.name?.message}</S.SpanError>
+        <S.GenericContainer>
+          <InputLabel
+            type="text"
+            register={register}
+            name={"name"}
+            label={"Nome"}
+          />
+          <S.SpanError className="error">{errors.name?.message}</S.SpanError>
+        </S.GenericContainer>
 
-        <InputLabel
-          type="email"
-          register={register}
-          name={"email"}
-          label={"E-mail"}
-        />
-        <S.SpanError>{errors.email?.message}</S.SpanError>
+        <S.GenericContainer>
+          <InputLabel
+            type="email"
+            register={register}
+            name={"email"}
+            label={"E-mail"}
+          />
+          <S.SpanError className="error">{errors.email?.message}</S.SpanError>
+        </S.GenericContainer>
 
-        <InputLabel
-          type="password"
-          register={register}
-          name={"password"}
-          label={"Senha"}
-        />
-        <S.SpanError>{errors.password?.message}</S.SpanError>
+        <S.GenericContainer>
+          <InputLabel
+            type="password"
+            register={register}
+            name={"password"}
+            label={"Senha"}
+          />
+          <S.SpanError className="error">{errors.password?.message}</S.SpanError>
+        </S.GenericContainer>
 
         <ButtonLabel type="submit">Cadastrar</ButtonLabel>
 
