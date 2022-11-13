@@ -5,6 +5,10 @@ import S from "./style";
 const Register = () => {
   return (
     <>
+      <S.OrangeKawaii2BG />
+      <S.StickyTape2BG />
+      <S.StickyTapeBG />
+      <S.OrangeKawaiiBG />
       <S.Container>
         <S.Header>
           <S.Logo>
