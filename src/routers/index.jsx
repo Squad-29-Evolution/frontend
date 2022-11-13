@@ -9,6 +9,7 @@ import Members from "../pages/Members";
 import PrivateArea from "../components/PrivateArea";
 import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
 import Register from "../pages/Register";
+import Logout from "../pages/Logout";
 
 const Routers = () => {
   return (
@@ -30,6 +31,7 @@ const Routers = () => {
 
         {/* public routes */}
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/recoverypass" element={<RecoveryPass />} />
