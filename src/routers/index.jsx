@@ -5,8 +5,9 @@ import NotFound from "../pages/NotFound";
 import RecoveryPass from "../pages/RecoveryPass";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
-import HomeAdmin from "../pages/HomeAdmin";
+import Members from "../pages/Members";
 import PrivateArea from "../components/PrivateArea";
+import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
 import Register from "../pages/Register";
 
 const Routers = () => {
@@ -22,7 +23,9 @@ const Routers = () => {
 
         {/* admin routes */}
         <Route element={<PrivateRouteAdmin />}>
-          <Route path="/dashboad" element={<HomeAdmin />} />
+          <Route path="/admin" element={<PrivateAreaAdmin />}>
+            <Route path="/admin/members" element={<Members />} />
+          </Route>
         </Route>
 
         {/* public routes */}

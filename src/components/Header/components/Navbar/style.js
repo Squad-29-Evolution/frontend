@@ -43,6 +43,11 @@ const UserPicture = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media (max-width: 800px) {
+    max-width: 40px;
+    max-height: 40px;
+  }
 `;
 
 const UserName = styled.p`
@@ -51,6 +56,10 @@ const UserName = styled.p`
   font-size: 1.1rem;
   color: #b3b3b3;
   margin-left: 10px;
+
+  @media (max-width: 800px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export default {

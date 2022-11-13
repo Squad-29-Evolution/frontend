@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
   border: 0;
   font-size: 16px;
-  font-family:  sans-serif;
+  font-family:  "Metropolis", sans-serif;
   vertical-align: baseline;
   box-sizing: border-box;
 }
