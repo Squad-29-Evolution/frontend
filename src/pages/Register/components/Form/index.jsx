@@ -86,6 +86,10 @@ const Form = () => {
         <S.SpanError>{errors.email?.message}</S.SpanError>
 
         <ButtonLabel type="submit">Cadastrar</ButtonLabel>
+
+        <S.CreateAccount>
+          Já possui uma conta? <S.Span to="/login">Entre</S.Span>
+        </S.CreateAccount>
       </S.Form>
     </S.Container>
   );

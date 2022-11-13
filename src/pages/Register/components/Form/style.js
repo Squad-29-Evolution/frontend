@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.main`
   max-width: 533px;
@@ -31,4 +32,20 @@ const SpanError = styled.span`
   bottom: 1px;
 `;
 
-export default { Container, Form, SpanError };
+const CreateAccount = styled.p`
+  font-family: "Metropolis", sans-serif;
+  font-weight: 400;
+  color: #e5e5e5;
+`;
+
+const Span = styled(Link)`
+  background: linear-gradient(180deg, #ff8408 0%, #ff5d22 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: inherit;
+  font-family: inherit;
+`;
+
+export default { Container, Form, SpanError, CreateAccount, Span };
