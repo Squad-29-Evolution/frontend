@@ -7,6 +7,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import api from "../../api/index";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading";
+import Modal from "./components/Modal";
 
 const Members = () => {
   useDocumentTitle("Membros");
@@ -58,6 +59,7 @@ const Members = () => {
 
   return (
     <S.Container>
+      <Modal />
       <S.NewButton>+ Adicionar novo administrador</S.NewButton>
 
       <S.WrapperGeneric className="fixed">
