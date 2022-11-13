@@ -7,6 +7,10 @@ const Container = styled.main`
   background-color: rgba(30, 30, 30, 0.5);
   border-radius: 15px;
   padding: 24px 46px;
+
+  @media (max-width: 800px) {
+    max-width: 350px;
+  }
 `;
 
 const Form = styled.form`

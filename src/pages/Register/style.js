@@ -10,6 +10,28 @@ const Container = styled.section`
   justify-content: center;
 `;
 
+const Header = styled.header`
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+`;
+
+const Logo = styled.div`
+  margin: 11px 0 0 142px;
+  width: 71px;
+  height: 52px;
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 800px) {
+    margin: 10px;
+  }
+`;
+
 const Title = styled.h1`
   font-family: "Metropolis", sans-serif;
   font-weight: 700;
@@ -18,4 +40,4 @@ const Title = styled.h1`
   margin-bottom: 19px;
 `;
 
-export default { Container, Title };
+export default { Container, Header, Logo, Title };
