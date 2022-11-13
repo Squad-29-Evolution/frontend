@@ -28,18 +28,6 @@ const Form = () => {
       theme: "dark",
     });
 
-  const sucessNotify = () =>
-    toast.success("Conta criada com sucesso", {
-      position: "top-right",
-      autoClose: 1800,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
   const {
     register,
     handleSubmit,
@@ -51,7 +39,7 @@ const Form = () => {
 
     try {
       await api.post("/users/create", formData);
-      sucessNotify();
+
       const { data } = await api.post("/users/login", {
         email: formData.email,
         password: formData.password,
@@ -95,7 +83,7 @@ const Form = () => {
           name={"password"}
           label={"Senha"}
         />
-        <S.SpanError>{errors.email?.message}</S.SpanError>
+        <S.SpanError>{errors.password?.message}</S.SpanError>
 
         <ButtonLabel type="submit">Cadastrar</ButtonLabel>
 

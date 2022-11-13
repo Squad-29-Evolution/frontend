@@ -25,7 +25,7 @@ const Navbar = ({ admin }) => {
 
             {role === "ADMIN" && (
               <S.NavItem>
-                <S.NavLink to="/dashboad">Administração</S.NavLink>
+                <S.NavLink to="/admin/members">Administração</S.NavLink>
               </S.NavItem>
             )}
           </S.NavList>

@@ -4,7 +4,7 @@ const schema = yup
   .object({
     name: yup
       .string()
-      .min(8, "Mínimo de 8 caracteres")
+      .min(4, "Mínimo de 4 caracteres")
       .required("Esse campo é obrigatório"),
     email: yup
       .string()
