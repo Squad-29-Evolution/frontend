@@ -25,7 +25,7 @@ const ContentBG = styled.div`
   width: 100%;
   height: 60%;
   top: 0;
-  z-index: 0;
+  z-index: -1;
 `;
 
 export default { Container, Main, ContentOutlet, ContentBG };

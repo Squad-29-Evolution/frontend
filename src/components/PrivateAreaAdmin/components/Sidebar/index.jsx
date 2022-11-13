@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen, closedModal }) => {
           <S.Generic>
             <S.MenuList>
               <S.Item>
-                <S.MenuLink>
+                <S.MenuLink to="/admin/members">
                   <img className="member" src={MemberIcon} alt="member icon" />
                   Membros
                 </S.MenuLink>
