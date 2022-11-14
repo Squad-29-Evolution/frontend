@@ -28,7 +28,6 @@ const AdminContents = () => {
       headers: { Authorization: `Bearer ${token}` },
     };
     const { data } = await api.get("/contents", config);
-    console.log(data);
     setData(data);
     setIsLoading(false);
   };
@@ -90,7 +89,7 @@ const AdminContents = () => {
 
       <S.Header>
         <S.NewButton type="button" onClick={openModal}>
-          + Adicionar nova trilha
+          + Adicionar novo conteúdo
         </S.NewButton>
         <SearchBar
           inpuValue={inpuValue}

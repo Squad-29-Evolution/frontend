@@ -28,7 +28,7 @@ const NewButton = styled.button`
 `;
 
 const WrapperGeneric = styled.div`
-  max-width: 900px;
+  max-width: 960px;
   width: 100%;
 
   margin: 0 auto;

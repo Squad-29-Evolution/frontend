@@ -5,7 +5,6 @@ import api from "../api";
 export const AuthContext = createContext({});
 
 export const AuthContextProvide = ({ children }) => {
-  console.log("atualizou");
   //TODO: refazer ess hook e  criar funções especifica para cada ação
   const [authUser, setAuthUser] = useState({
     isLoading: true,
@@ -66,20 +65,18 @@ export const AuthContextProvide = ({ children }) => {
     try {
       const response = await api.post("/validatetoken", { token: isToken });
 
+      const config = {
+        headers: { Authorization: `Bearer ${isToken}` },
+      };
+
       if (response.status == 200 && !authUser.isUser) {
-        const config = {
-          headers: { Authorization: `Bearer ${isToken}` },
-        };
+        console.log("dentro");
         const { id } = response.data;
 
         const { data } = await api.get(`/users/${id}`, config);
         //console.log(data);
-        // eslint-disable-next-line no-unused-vars
-        const { data: dataXp } = await api.post(
-          "/dates/salve",
-          { uuid: id },
-          config,
-        );
+
+        await api.post("/dates/salve", { uuid: id }, config);
 
         return salveUserInfo(data, isToken);
       }
@@ -100,6 +97,7 @@ export const AuthContextProvide = ({ children }) => {
   }
 
   useEffect(() => {
+    console.log("atualizou");
     const isToken = getToken();
 
     if (!isToken) return setAuthUser({ ...authUser, isLoading: false });
