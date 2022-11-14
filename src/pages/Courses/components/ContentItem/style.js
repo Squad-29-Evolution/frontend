@@ -7,12 +7,21 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const DescriptionContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 29px;
+
+  @media (max-width: 1000px) {
+    margin-left: 0;
+  }
 `;
 
 const TitleDescriptionContent = styled.h1`
@@ -21,6 +30,10 @@ const TitleDescriptionContent = styled.h1`
   font-weight: 600;
   font-family: "Metropolis", sans-serif;
   margin-bottom: 14px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const TextDescriptionContent = styled.p`
@@ -28,6 +41,10 @@ const TextDescriptionContent = styled.p`
   font-size: 1.15rem;
   color: #e5e5e5;
   line-height: 38.08px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const StatusView = styled.div`
