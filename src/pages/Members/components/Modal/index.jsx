@@ -4,8 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./validation";
 import api from "../../../../api";
+import LoadingSmall from "../../../../components/LoadingSmall";
+import { useState } from "react";
 
 const Modal = ({ closeModal, setData, notify, token }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -13,7 +17,7 @@ const Modal = ({ closeModal, setData, notify, token }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (formData) => {
-    //setIsLoading(true);
+    setIsLoading(true);
 
     try {
       const config = {
@@ -27,6 +31,7 @@ const Modal = ({ closeModal, setData, notify, token }) => {
       return closeModal();
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
       notify("error", "Ocorreu um error ao criar administrador");
     }
   };
@@ -36,42 +41,48 @@ const Modal = ({ closeModal, setData, notify, token }) => {
       <S.Container>
         <S.Title>Adicionar novo administrador</S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <S.WrapperGeneric>
-            <InputLabel
-              type="text"
-              register={register}
-              name={"name"}
-              label={"Nome"}
-            />
-            <S.SpanError>{errors.name?.message}</S.SpanError>
-          </S.WrapperGeneric>
+          {isLoading ? (
+            <LoadingSmall />
+          ) : (
+            <>
+              <S.WrapperGeneric>
+                <InputLabel
+                  type="text"
+                  register={register}
+                  name={"name"}
+                  label={"Nome"}
+                />
+                <S.SpanError>{errors.name?.message}</S.SpanError>
+              </S.WrapperGeneric>
 
-          <S.WrapperGeneric>
-            <InputLabel
-              type="email"
-              register={register}
-              name={"email"}
-              label={"Email"}
-            />
-            <S.SpanError>{errors.email?.message}</S.SpanError>
-          </S.WrapperGeneric>
+              <S.WrapperGeneric>
+                <InputLabel
+                  type="email"
+                  register={register}
+                  name={"email"}
+                  label={"Email"}
+                />
+                <S.SpanError>{errors.email?.message}</S.SpanError>
+              </S.WrapperGeneric>
 
-          <S.WrapperGeneric>
-            <InputLabel
-              type="password"
-              register={register}
-              name={"password"}
-              label={"Senha"}
-            />
-            <S.SpanError>{errors.password?.message}</S.SpanError>
-          </S.WrapperGeneric>
+              <S.WrapperGeneric>
+                <InputLabel
+                  type="password"
+                  register={register}
+                  name={"password"}
+                  label={"Senha"}
+                />
+                <S.SpanError>{errors.password?.message}</S.SpanError>
+              </S.WrapperGeneric>
 
-          <S.WrapperButton>
-            <S.Button type="reset" onClick={closeModal}>
-              Cancelar
-            </S.Button>
-            <S.Button type="submit">Criar</S.Button>
-          </S.WrapperButton>
+              <S.WrapperButton>
+                <S.Button type="reset" onClick={closeModal}>
+                  Cancelar
+                </S.Button>
+                <S.Button type="submit">Criar</S.Button>
+              </S.WrapperButton>
+            </>
+          )}
         </S.Form>
       </S.Container>
       <S.BG />
