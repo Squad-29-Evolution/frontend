@@ -93,7 +93,7 @@ const Certificate = (props) => {
             </Text>
             <Text style={styles.textName}>{props.name.toUpperCase()}</Text>
             <Text>
-              concluiu com êxito a{" "}
+              concluiu com êxito a trilha{" "}
               <Text style={styles.textDestaque}>{props.trail}</Text>, com um
               total de{" "}
               <Text style={styles.textDestaque}>{props.hours} horas</Text>.
@@ -107,3 +107,5 @@ const Certificate = (props) => {
     </Document>
   );
 };
+
+export default Certificate;
