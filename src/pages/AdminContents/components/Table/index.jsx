@@ -54,18 +54,27 @@ const Table = ({ data, setData, notify, token }) => {
                 </S.BContent>
 
                 <S.BContent className="middle">
-                  <S.Description>{title}</S.Description>
+                  <S.Btext>{title}</S.Btext>
                 </S.BContent>
 
                 <S.BContent className="middle-left">
                   <S.ContentInfo>
                     <S.Btext>Neste episódio</S.Btext>
-                    <S.Span>{description}</S.Span>
+                    <S.Span title={description}>{description}</S.Span>
                   </S.ContentInfo>
                 </S.BContent>
 
                 <S.BContent>
-                  <S.Btext>{link}</S.Btext>
+                  <S.ContentInfo className="link">
+                    <S.Btext title={link}>{link}</S.Btext>
+                    <S.ButtonMore
+                      title="botão abri menu"
+                      name="button more"
+                      onClick={() =>
+                        openModal({ id, description, link, title, trail })
+                      }
+                    />
+                  </S.ContentInfo>
                 </S.BContent>
               </S.BRow>
             ))

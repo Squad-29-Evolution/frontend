@@ -63,6 +63,7 @@ const BContent = styled.div`
   height: 100%;
   padding: 5px;
   position: relative;
+  flex: 1;
 
   &.middle {
     border-left: 2px solid #b3b3b3;
@@ -80,16 +81,22 @@ const Btext = styled.p`
   font-size: 1.1rem;
 `;
 
-const Description = styled.div`
-  font-size: 0.9rem;
-  color: #e5e5e5;
-  font-weight: 500;
-`;
-
 const ContentInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2px;
+
+  &.link {
+    flex-direction: row;
+
+    & p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 const Span = styled.div`
@@ -97,6 +104,10 @@ const Span = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
   margin-top: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const NotContent = styled.div`
@@ -110,7 +121,6 @@ const NotContent = styled.div`
 `;
 
 const ButtonMore = styled.button`
-  position: absolute;
   width: 30px;
   height: 30px;
   border: none;
@@ -119,6 +129,7 @@ const ButtonMore = styled.button`
   cursor: pointer;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0 5px;
 `;
 
 export default {
@@ -133,7 +144,6 @@ export default {
   Btext,
   ContentInfo,
   NotContent,
-  Description,
   ButtonMore,
   Span,
 };
