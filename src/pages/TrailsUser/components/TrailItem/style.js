@@ -4,12 +4,22 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  width: 80%;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 29px;
+
+  @media (max-width: 500px) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 `;
 
 const StatusView = styled.div`

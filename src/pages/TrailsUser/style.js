@@ -9,6 +9,12 @@ const Container = styled.div`
 const TrailsSection = styled.section`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  /* background-color: red; */
+
+  @media (max-width: 800px) {
+    align-items: center;
+  }
 `;
 
 const TitleTrailsSection = styled.h1`
