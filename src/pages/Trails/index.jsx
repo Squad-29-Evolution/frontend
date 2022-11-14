@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import S from "./style";
-import WrapperCount from "./components/WrapperCount";
 import SearchBar from "./components/SearchBar";
 import Table from "./components/Table";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
@@ -10,46 +9,26 @@ import Loading from "../../components/Loading";
 import Modal from "./components/Modal";
 import { toast } from "react-toastify";
 
-const Members = () => {
-  useDocumentTitle("Membros");
+const Trails = () => {
+  useDocumentTitle("Trilhas");
 
   const { authUser } = useAuth();
   const { token } = authUser;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [usersCount, setUsersCount] = useState({
-    member: 0,
-    admin: 0,
-  });
   const [data, setData] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [inpuValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState([]);
 
-  const setTotalMember = (data) => {
-    const totalUser = data.filter((user) => {
-      return user.role == "USER";
-    });
-
-    const totalAdmin = data.filter((user) => {
-      return user.role == "ADMIN";
-    });
-
-    return setUsersCount({
-      member: totalUser.length,
-      admin: totalAdmin.length,
-    });
-  };
-
-  const getAllusers = async () => {
+  const getAllTrails = async () => {
     setIsLoading(true);
 
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const { data } = await api.get("/users", config);
+    const { data } = await api.get("/trail", config);
     setData(data);
-    setTotalMember(data);
     setIsLoading(false);
   };
 
@@ -67,16 +46,16 @@ const Members = () => {
 
   const searchFunction = () => {
     const lowerCaseInput = parserToLowerCase(inpuValue);
-    const filterData = data.filter((user) => {
-      const { email } = user;
-      const lowerCaseEmail = parserToLowerCase(email);
+    const filterData = data.filter((trail) => {
+      const { name } = trail;
+      const lowerCaseEmail = parserToLowerCase(name);
       return lowerCaseEmail.includes(lowerCaseInput);
     });
     return setSearchData(filterData);
   };
 
   useEffect(() => {
-    getAllusers();
+    getAllTrails();
   }, []);
 
   const notify = (type, message) =>
@@ -107,28 +86,27 @@ const Members = () => {
           token={token}
         />
       )}
-      <S.NewButton type="button" onClick={openModal}>
-        + Adicionar novo administrador
-      </S.NewButton>
 
-      <S.WrapperGeneric className="fixed">
-        <WrapperCount usersCount={usersCount} />
+      <S.Header>
+        <S.NewButton type="button" onClick={openModal}>
+          + Adicionar nova trilha
+        </S.NewButton>
         <SearchBar
           inpuValue={inpuValue}
           setInputValue={setInputValue}
           onKeyUp={searchFunction}
         />
-      </S.WrapperGeneric>
+      </S.Header>
 
       <S.WrapperGeneric>
         {searchData.length > 0 ? (
           <Table data={searchData} />
         ) : (
-          <Table data={data} />
+          <Table data={data} setData={setData} notify={notify} token={token} />
         )}
       </S.WrapperGeneric>
     </S.Container>
   );
 };
 
-export default Members;
+export default Trails;

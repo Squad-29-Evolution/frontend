@@ -7,6 +7,17 @@ const Container = styled.div`
   padding: 10px;
 `;
 
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  & label {
+    max-width: 500px;
+  }
+`;
+
 const NewButton = styled.button`
   font-weight: 700;
   color: #e5e5e5;
@@ -32,4 +43,5 @@ export default {
   NewButton,
   WrapperGeneric,
   ToastContainerCss,
+  Header,
 };

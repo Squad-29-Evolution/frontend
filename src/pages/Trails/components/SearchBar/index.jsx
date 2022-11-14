@@ -7,7 +7,7 @@ const SearchBar = ({ inpuValue, setInputValue, onKeyUp }) => {
       <img src={Search} alt="lupa" />
       <S.Input
         type="text"
-        placeholder="Digite o e-mail para pesquisar"
+        placeholder="Digite o nome da trilha"
         value={inpuValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={onKeyUp}

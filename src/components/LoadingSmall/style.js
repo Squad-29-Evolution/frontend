@@ -16,20 +16,15 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 4;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: #2e2e2e;
-  inset: 0;
+  z-index: 14;
 `;
 
 const Loading = styled.div`
   background-image: url(${Orange});
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   animation: ${Loop} 2s linear infinite;
 `;
 

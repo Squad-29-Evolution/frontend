@@ -11,6 +11,7 @@ import PrivateAreaAdmin from "../components/PrivateAreaAdmin";
 import Register from "../pages/Register";
 import Logout from "../pages/Logout";
 import Content from "../pages/Content";
+import Trails from "../pages/Trails";
 
 const Routers = () => {
   return (
@@ -28,6 +29,7 @@ const Routers = () => {
         <Route element={<PrivateRouteAdmin />}>
           <Route path="/admin" element={<PrivateAreaAdmin />}>
             <Route path="/admin/members" element={<Members />} />
+            <Route path="/admin/trails" element={<Trails />} />
           </Route>
         </Route>
 
