@@ -12,6 +12,7 @@ import Register from "../pages/Register";
 import Logout from "../pages/Logout";
 import AdminTrails from "../pages/AdminTrails";
 import AdminContents from "../pages/AdminContents";
+import Content from "../pages/Content";
 
 const Routers = () => {
   return (
@@ -21,6 +22,7 @@ const Routers = () => {
         <Route element={<PrivateRoute />}>
           <Route element={<PrivateArea />}>
             <Route path="/" element={<Home />} />
+            <Route path="/content" element={<Content />} />
           </Route>
         </Route>
 
