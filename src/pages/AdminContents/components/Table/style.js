@@ -69,8 +69,8 @@ const BContent = styled.div`
     border-right: 2px solid #b3b3b3;
   }
 
-  &.flexStart {
-    justify-content: flex-start;
+  &.middle-left {
+    border-right: 2px solid #b3b3b3;
   }
 `;
 
@@ -86,26 +86,20 @@ const Description = styled.div`
   font-weight: 500;
 `;
 
-const ContentPicture = styled.div`
-  background-color: #6b5a4c;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-
-  & img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 const ContentInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2px;
 `;
 
-const NotTrail = styled.div`
+const Span = styled.div`
+  color: #e5e5e5;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 5px;
+`;
+
+const NotContent = styled.div`
   height: 50px;
   width: 100%;
   padding: 10px;
@@ -136,10 +130,10 @@ export default {
   Body,
   BRow,
   BContent,
-  ContentPicture,
   Btext,
   ContentInfo,
-  NotTrail,
+  NotContent,
   Description,
   ButtonMore,
+  Span,
 };

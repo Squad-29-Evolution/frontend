@@ -3,6 +3,8 @@ import Modal from "./Modal";
 import { useState } from "react";
 
 const Table = ({ data, setData, notify, token }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = useState(false);
   const [localTrail, setLocalTrail] = useState({});
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -28,49 +30,49 @@ const Table = ({ data, setData, notify, token }) => {
       <S.Table>
         <S.Header>
           <S.HRow>
-            <S.Htext>Nome</S.Htext>
+            <S.Htext>Trilha</S.Htext>
           </S.HRow>
 
           <S.HRow>
-            <S.Htext>Descrição</S.Htext>
+            <S.Htext>Conteúdo</S.Htext>
           </S.HRow>
 
           <S.HRow>
-            <S.Htext>Horas</S.Htext>
+            <S.Htext>Introdução ao curso</S.Htext>
+          </S.HRow>
+          <S.HRow>
+            <S.Htext>Link</S.Htext>
           </S.HRow>
         </S.Header>
 
         <S.Body>
           {data.length > 0 ? (
-            data.map((trail) => (
-              <S.BRow key={trail.id}>
-                <S.BContent className="flexStart">
-                  <S.ContentPicture>
-                    <img src={trail.icon} alt="g" />
-                  </S.ContentPicture>
-                  <S.ContentInfo>
-                    <S.Btext>{trail.name}</S.Btext>
-                  </S.ContentInfo>
+            data.map(({ id, description, link, title, trail }) => (
+              <S.BRow key={id}>
+                <S.BContent>
+                  <S.Btext>{trail.name}</S.Btext>
                 </S.BContent>
 
                 <S.BContent className="middle">
-                  <S.Description>{trail.description}</S.Description>
+                  <S.Description>{title}</S.Description>
+                </S.BContent>
+
+                <S.BContent className="middle-left">
+                  <S.ContentInfo>
+                    <S.Btext>Neste episódio</S.Btext>
+                    <S.Span>{description}</S.Span>
+                  </S.ContentInfo>
                 </S.BContent>
 
                 <S.BContent>
-                  <S.Btext>{trail.hours}</S.Btext>
-                  <S.ButtonMore
-                    title="botão abri menu"
-                    name="button more"
-                    onClick={() => openModal(trail)}
-                  />
+                  <S.Btext>{link}</S.Btext>
                 </S.BContent>
               </S.BRow>
             ))
           ) : (
-            <S.NotTrail>
+            <S.NotContent>
               <p>Não foi encontrado nenhuma trilha</p>
-            </S.NotTrail>
+            </S.NotContent>
           )}
         </S.Body>
       </S.Table>

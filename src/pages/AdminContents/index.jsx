@@ -9,7 +9,7 @@ import Loading from "../../components/Loading";
 import Modal from "./components/Modal";
 import { toast } from "react-toastify";
 
-const Trails = () => {
+const AdminContents = () => {
   useDocumentTitle("Trilhas");
 
   const { authUser } = useAuth();
@@ -21,13 +21,14 @@ const Trails = () => {
   const [inpuValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState([]);
 
-  const getAllTrails = async () => {
+  const getAllContents = async () => {
     setIsLoading(true);
 
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const { data } = await api.get("/trail", config);
+    const { data } = await api.get("/contents", config);
+    console.log(data);
     setData(data);
     setIsLoading(false);
   };
@@ -55,7 +56,7 @@ const Trails = () => {
   };
 
   useEffect(() => {
-    getAllTrails();
+    getAllContents();
   }, []);
 
   const notify = (type, message) =>
@@ -109,4 +110,4 @@ const Trails = () => {
   );
 };
 
-export default Trails;
+export default AdminContents;

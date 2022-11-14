@@ -43,7 +43,7 @@ const Sidebar = ({ isOpen, closedModal }) => {
               </S.Item>
 
               <S.Item>
-                <S.MenuLink>
+                <S.MenuLink to="/admin/contents">
                   <img src={ContentIcon} alt="icone de conteudo" />
                   Conteúdo
                 </S.MenuLink>
