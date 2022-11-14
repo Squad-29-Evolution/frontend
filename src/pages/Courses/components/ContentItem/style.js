@@ -3,9 +3,10 @@ import styled from "styled-components";
 const Container = styled.div`
   max-width: 880px;
   width: 100%;
+  height: 230px;
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
 const DescriptionContent = styled.div`
@@ -29,9 +30,40 @@ const TextDescriptionContent = styled.p`
   line-height: 38.08px;
 `;
 
+const StatusView = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+`;
+
+const TitleStatusView = styled.p`
+  font-size: 1rem;
+  font-family: "Metropolis", sans-serif;
+  color: #e5e5e5;
+  margin-bottom: 5px;
+  margin-right: 15px;
+`;
+
+const BadgeStatus = styled.div`
+  border: none;
+  width: 110px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: ${(props) =>
+    props.concluded == true ? "#16a085" : "rgba(85, 85, 85, 0.87)"};
+  color: #e5e5e5;
+  text-transform: uppercase;
+`;
+
 export default {
   Container,
   DescriptionContent,
   TitleDescriptionContent,
   TextDescriptionContent,
+  StatusView,
+  TitleStatusView,
+  BadgeStatus,
 };

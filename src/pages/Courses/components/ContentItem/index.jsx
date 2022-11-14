@@ -8,6 +8,12 @@ const ContentItem = (props) => {
       <S.DescriptionContent>
         <S.TitleDescriptionContent>{props.title}</S.TitleDescriptionContent>
         <S.TextDescriptionContent>{props.description}</S.TextDescriptionContent>
+        <S.StatusView>
+          <S.TitleStatusView>STATUS</S.TitleStatusView>
+          <S.BadgeStatus concluded={props.concluded}>
+            {props.concluded == true ? "Concluído" : "Em aberto"}
+          </S.BadgeStatus>
+        </S.StatusView>
       </S.DescriptionContent>
     </S.Container>
   );

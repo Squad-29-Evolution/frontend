@@ -12,24 +12,28 @@ const Courses = () => {
           title="Fundamentos"
           description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
 "
+          concluded={false}
         />
         <ContentItem
           img={QA}
           title="Fundamentos"
           description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
 "
+          concluded={true}
         />
         <ContentItem
           img={QA}
           title="Fundamentos"
           description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
 "
+          concluded={true}
         />
         <ContentItem
           img={QA}
           title="Fundamentos"
           description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
 "
+          concluded={false}
         />
       </S.ContentsCourse>
     </S.Container>
