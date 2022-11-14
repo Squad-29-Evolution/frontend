@@ -36,9 +36,9 @@ const Sidebar = ({ isOpen, closedModal }) => {
               </S.Item>
 
               <S.Item>
-                <S.MenuLink>
-                  <img src={CourseIcon} alt="icone de curos" />
-                  Cursos
+                <S.MenuLink to="/admin/trails">
+                  <img src={CourseIcon} alt="icone de trilhas" />
+                  Trilhas
                 </S.MenuLink>
               </S.Item>
 
