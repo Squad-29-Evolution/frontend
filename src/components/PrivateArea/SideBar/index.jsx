@@ -24,14 +24,14 @@ const Sidebar = ({ isOpen, closedModal }) => {
           <S.Generic>
             <S.MenuList>
               <S.Item>
-                <S.MenuLink to="/admin/members">
+                <S.MenuLink to="/courses">
                   <img src={CourseIcon} alt="icone de cursos" />
                   Meus cursos
                 </S.MenuLink>
               </S.Item>
 
               <S.Item>
-                <S.MenuLink>
+                <S.MenuLink to="/trails">
                   <img src={ContentIcon} alt="icone de trilhas" />
                   Trilhas
                 </S.MenuLink>
