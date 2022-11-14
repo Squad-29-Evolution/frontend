@@ -39,14 +39,14 @@ const Form = styled.form`
 
 const WrapperGeneric = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   position: relative;
 
   & input {
     outline: none;
     border-radius: 10px;
     background: #2e2e2ea3;
-    border: 2px solid #fff;
+    border: 2px solid #e5e5e5;
   }
 `;
 

@@ -39,7 +39,7 @@ const Form = styled.form`
 
 const WrapperGeneric = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   position: relative;
 
   & input {

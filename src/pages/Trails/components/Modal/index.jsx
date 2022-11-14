@@ -19,22 +19,22 @@ const Modal = ({ closeModal, setData, notify, token }) => {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
-      const { data } = await api.post("/admin/create", formData, config);
+      const { data } = await api.post("/trail/create", formData, config);
 
-      const { name, email, picture, role, id, Dates } = data;
-      setData((prev) => [...prev, { name, email, picture, role, id, Dates }]);
-      notify("success", "Administrador criado com sucesso");
+      const { name, description, hours, icon, id } = data;
+      setData((prev) => [...prev, { name, description, hours, icon, id }]);
+      notify("success", "Trilha adicionada com sucesso");
       return closeModal();
     } catch (error) {
       console.log(error);
-      notify("error", "Ocorreu um error ao criar administrador");
+      notify("error", "Ocorreu um error ao criar trilha");
     }
   };
 
   return (
     <>
       <S.Container>
-        <S.Title>Adicionar novo administrador</S.Title>
+        <S.Title>Adicionar nova Trilha</S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.WrapperGeneric>
             <InputLabel
@@ -48,22 +48,32 @@ const Modal = ({ closeModal, setData, notify, token }) => {
 
           <S.WrapperGeneric>
             <InputLabel
-              type="email"
+              type="text"
               register={register}
-              name={"email"}
-              label={"Email"}
+              name={"description"}
+              label={"Descrição"}
             />
-            <S.SpanError>{errors.email?.message}</S.SpanError>
+            <S.SpanError>{errors.description?.message}</S.SpanError>
           </S.WrapperGeneric>
 
           <S.WrapperGeneric>
             <InputLabel
-              type="password"
+              type="number"
               register={register}
-              name={"password"}
-              label={"Senha"}
+              name={"hours"}
+              label={"Horas"}
             />
-            <S.SpanError>{errors.password?.message}</S.SpanError>
+            <S.SpanError>{errors.hours?.message}</S.SpanError>
+          </S.WrapperGeneric>
+
+          <S.WrapperGeneric>
+            <InputLabel
+              type="text"
+              register={register}
+              name={"icon"}
+              label={"Icone (URL)"}
+            />
+            <S.SpanError>{errors.icon?.message}</S.SpanError>
           </S.WrapperGeneric>
 
           <S.WrapperButton>
