@@ -14,7 +14,7 @@ const ContentsCourse = styled.section`
   margin-bottom: 51px;
 `;
 
-const TitleCourse = styled.h1`
+const TitleSection = styled.h1`
   font-family: "Metropolis", sans-serif;
   font-weight: 700;
   font-size: 2rem;
@@ -22,4 +22,23 @@ const TitleCourse = styled.h1`
   margin-bottom: 22px;
 `;
 
-export default { Container, ContentsCourse, TitleCourse };
+const CoursesView = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ContentCoursesView = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
+export default {
+  Container,
+  ContentsCourse,
+  TitleSection,
+  CoursesView,
+  ContentCoursesView,
+};
