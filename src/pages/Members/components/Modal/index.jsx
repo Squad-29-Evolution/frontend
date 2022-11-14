@@ -21,8 +21,8 @@ const Modal = ({ closeModal, setData, notify, token }) => {
       };
       const { data } = await api.post("/admin/create", formData, config);
 
-      const { name, email, picture, role, id } = data;
-      setData((prev) => [...prev, { name, email, picture, role, id }]);
+      const { name, email, picture, role, id, Dates } = data;
+      setData((prev) => [...prev, { name, email, picture, role, id, Dates }]);
       notify("success", "Administrador criado com sucesso");
       return closeModal();
     } catch (error) {

@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 600px;
   border-radius: 10px;
-  background: linear-gradient(180deg, #ff8507 0%, #ff5a23 100%);
+  background: #1e1e1ef7;
   position: fixed;
   z-index: 10;
   left: 50%;
@@ -27,6 +27,8 @@ const Title = styled.div`
   color: #e5e5e5;
   font-size: 1.4rem;
   margin-bottom: 20px;
+  text-align: center;
+  margin-top: 10px;
 `;
 
 const Form = styled.form`
@@ -44,6 +46,7 @@ const WrapperGeneric = styled.div`
     outline: none;
     border-radius: 10px;
     background: #2e2e2ea3;
+    border: 2px solid #fff;
   }
 `;
 
@@ -58,9 +61,9 @@ const WrapperButton = styled.div`
 const Button = styled.button`
   border-radius: 10px;
   font-size: 1.1rem;
-  color: #e5e5e5;
+  color: #ffffff;
   padding: 10px;
-  background: #2e2e2e;
+  background: #ff5722;
   cursor: pointer;
   width: 100%;
   margin: 0 10px;
