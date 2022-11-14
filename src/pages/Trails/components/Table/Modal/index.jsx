@@ -21,18 +21,26 @@ const Modal = ({ closeModal, setData, notify, token, localTrail }) => {
     setValue("hours", localTrail.hours);
   });
 
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
   const onSubmit = async (formData) => {
     //setIsLoading(true);
 
     try {
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-      const { data } = await api.post("/trail/create", formData, config);
+      const { data } = await api.put(
+        `/trail/${localTrail.id}`,
+        formData,
+        config,
+      );
 
-      const { name, description, hours, icon, id } = data;
-      setData((prev) => [...prev, { name, description, hours, icon, id }]);
-      notify("success", "Trilha adicionada com sucesso");
+      const { description, hours, icon, id, name } = data;
+      setData((prev) => {
+        const newData = prev.filter((trail) => trail.id != id);
+        return [...newData, { description, hours, icon, id, name }];
+      });
+      notify("success", "Trilha atualizada com sucesso");
       return closeModal();
     } catch (error) {
       console.log(error);
@@ -40,10 +48,28 @@ const Modal = ({ closeModal, setData, notify, token, localTrail }) => {
     }
   };
 
+  const deleteTrail = async () => {
+    try {
+      const { data } = await api.delete(`/trail/${localTrail.id}`, config);
+      console.log(data);
+      setData((prev) => {
+        const newData = prev.filter((trail) => trail.id != localTrail.id);
+        return newData;
+      });
+
+      notify("success", `A trilha ${localTrail.name} atualizada foi excluida`);
+    } catch (error) {
+      notify(
+        "error",
+        "Ocorreu um error ao excluir trilha (A trilha tem conteudos)",
+      );
+    }
+  };
+
   return (
     <>
       <S.Container>
-        <S.Title>Editar ou excluir Trilha</S.Title>
+        <S.Title>Editar ou Excluir Trilha</S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.WrapperGeneric>
             <InputLabel
@@ -89,7 +115,9 @@ const Modal = ({ closeModal, setData, notify, token, localTrail }) => {
             <S.Button type="reset" onClick={closeModal}>
               Cancelar
             </S.Button>
-            <S.Button type="button">Excluir</S.Button>
+            <S.Button type="button" onClick={deleteTrail}>
+              Excluir
+            </S.Button>
             <S.Button type="submit">Salvar</S.Button>
           </S.WrapperButton>
         </S.Form>
