@@ -12,6 +12,7 @@ import Register from "../pages/Register";
 import Logout from "../pages/Logout";
 import Content from "../pages/Content";
 import Trails from "../pages/Trails";
+import Courses from "../pages/Courses";
 
 const Routers = () => {
   return (
@@ -21,6 +22,7 @@ const Routers = () => {
         <Route element={<PrivateRoute />}>
           <Route element={<PrivateArea />}>
             <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
             <Route path="/content" element={<Content />} />
           </Route>
         </Route>
