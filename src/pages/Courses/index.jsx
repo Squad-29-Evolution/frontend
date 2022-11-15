@@ -97,6 +97,7 @@ const Courses = () => {
             return (
               <ContentItem
                 key={item.id}
+
                 to={`/content/${item.id}/${item.trail_id}`}
                 title={item.title}
                 description={item.description}
