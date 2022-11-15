@@ -3,14 +3,60 @@ import Arrow from "../../assets/arrow.svg";
 import S from "./style";
 import CourseBadge from "./components/CourseBadge";
 import BadgeLink from "../../components/BadgeLink";
-import UX from "../../assets/Intelligence.svg";
-import DEV from "../../assets/code.svg";
-import QA from "../../assets/quality.svg";
 import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import api from "../../api";
+import Loading from "../../components/Loading";
 
 const Home = () => {
-  const { getUserInfo } = useAuth();
-  const { xp } = getUserInfo();
+  const { getUserInfo, authUser } = useAuth();
+  const { id, xp } = getUserInfo();
+  const { token } = authUser;
+  const [trails, setTrails] = useState([]);
+  const [contents, setContents] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function getResponse() {
+      try {
+        setIsLoading(true);
+
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+
+        const allTrails = await api.get("/trail");
+        const salvedTrails = await api.get(`/getSalvedTrails/${id}`, config);
+
+        let contentsUser = [];
+
+        if (salvedTrails.data) {
+          let allContents = await api.get("/contents");
+
+          salvedTrails.data.map((itemTrail) => {
+            allContents.data.map((item) => {
+              if (item.trail_id == itemTrail.trail_id) {
+                contentsUser.push(item);
+              }
+            });
+          });
+        }
+
+        setTrails(allTrails.data);
+        setContents(contentsUser.slice(0, 4));
+        console.log(contentsUser);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getResponse();
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <S.Container>
@@ -19,28 +65,39 @@ const Home = () => {
         <S.CoursesSection>
           <S.HeaderCoursesSection>
             <S.TitleHeader>Meus Cursos</S.TitleHeader>
-            <S.LinkHeaderCoursesSection>
+            <S.LinkHeaderCoursesSection to={`/courses/${0}`}>
               Ver mais
               <S.ImgArrow src={Arrow} alt="Ícone de ver mais" />
             </S.LinkHeaderCoursesSection>
           </S.HeaderCoursesSection>
           <S.ViewCourses>
-            <CourseBadge title="Frontend" percent={70} />
-            <CourseBadge title="Backend" percent={50} />
-            <CourseBadge title="Mobile" percent={45} />
-            <CourseBadge title="Cloud" percent={90} />
+            {contents.map((item) => {
+              return (
+                <CourseBadge
+                  key={item.id}
+                  to={`/content/${item.id}/${item.trail_id}`}
+                  title={item.title}
+                />
+              );
+            })}
           </S.ViewCourses>
         </S.CoursesSection>
         <S.TrailsSection>
           <S.TitleHeader>Trilhas</S.TitleHeader>
           <S.ViewTrails>
-            <BadgeLink img={UX} title="UX/UI Design" />
-            <BadgeLink img={DEV} title="DEV" />
-            <BadgeLink img={QA} title="QA" />
+            {trails.map((item) => {
+              return (
+                <BadgeLink
+                  key={item.id}
+                  id={item.id}
+                  title={item.name}
+                  img={item.icon}
+                />
+              );
+            })}
           </S.ViewTrails>
         </S.TrailsSection>
       </S.ContentSection>
-      <S.CalendarSection>Calendário</S.CalendarSection>
     </S.Container>
   );
 };

@@ -4,14 +4,13 @@ import styled from "styled-components";
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 1.5fr;
+  display: flex;
+  flex-direction: column;
   background-color: #2e2e2e;
   padding: 15px 0;
 
-  @media (max-width: 1070px) {
-    display: flex;
-    flex-direction: column;
+  @media (max-width: 530px) {
+    padding: 0 15px;
   }
 `;
 
@@ -40,6 +39,10 @@ const TitleHeader = styled.h1`
   font-size: 2rem;
   font-weight: 700;
   color: #e5e5e5;
+
+  @media (max-width: 530px) {
+    text-align: center;
+  }
 `;
 
 const LinkHeaderCoursesSection = styled(Link)`
@@ -64,6 +67,10 @@ const ViewCourses = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
 `;
 
 const TrailsSection = styled.section`
@@ -78,9 +85,12 @@ const ViewTrails = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
-`;
+  gap: 15px;
 
-const CalendarSection = styled.section``;
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
+`;
 
 export default {
   Container,
@@ -93,5 +103,4 @@ export default {
   ViewCourses,
   TrailsSection,
   ViewTrails,
-  CalendarSection,
 };

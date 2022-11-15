@@ -1,15 +1,17 @@
 import S from "./style";
-import BadgeLink from "../../../../components/BadgeLink";
+import ContentIcon from "../../../../assets/content.svg";
 
 const ContentItem = (props) => {
   return (
     <S.Container>
-      <BadgeLink to={props.to} img={props.img} title={props.title} />
+      <S.LinkContainer to={props.to}>
+        <S.ImgLink src={ContentIcon} />
+        <S.TitleLink>{props.title}</S.TitleLink>
+      </S.LinkContainer>
       <S.DescriptionContent>
         <S.TitleDescriptionContent>{props.title}</S.TitleDescriptionContent>
         <S.TextDescriptionContent>{props.description}</S.TextDescriptionContent>
-        <S.StatusView>
-          <S.TitleStatusView>STATUS</S.TitleStatusView>
+        <S.StatusView concluded={props.concluded}>
           <S.BadgeStatus concluded={props.concluded}>
             {props.concluded == true ? "Concluído" : "Em aberto"}
           </S.BadgeStatus>

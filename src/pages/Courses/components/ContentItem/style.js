@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -6,12 +7,40 @@ const Container = styled.div`
   height: 230px;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   @media (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
   }
+`;
+
+const LinkContainer = styled(Link)`
+  max-width: 220px;
+  width: 100%;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #6b5a4c 99.99%, rgba(46, 46, 46, 0) 100%);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 0;
+`;
+
+const ImgLink = styled.img`
+  width: 120px;
+  height: 131px;
+  margin-bottom: 10px;
+`;
+
+const TitleLink = styled.p`
+  font-family: "Metropolis", sans-serif;
+  font-size: 1.25rem;
+  color: #f1f1f1;
+  text-align: center;
 `;
 
 const DescriptionContent = styled.div`
@@ -48,17 +77,9 @@ const TextDescriptionContent = styled.p`
 `;
 
 const StatusView = styled.div`
-  display: flex;
+  display: ${(props) => (props.concluded ? "flex" : "none")};
   align-items: center;
   margin-top: 15px;
-`;
-
-const TitleStatusView = styled.p`
-  font-size: 1rem;
-  font-family: "Metropolis", sans-serif;
-  color: #e5e5e5;
-  margin-bottom: 5px;
-  margin-right: 15px;
 `;
 
 const BadgeStatus = styled.div`
@@ -73,14 +94,17 @@ const BadgeStatus = styled.div`
     props.concluded == true ? "#16a085" : "rgba(85, 85, 85, 0.87)"};
   color: #e5e5e5;
   text-transform: uppercase;
+  margin-bottom: 10px;
 `;
 
 export default {
   Container,
+  LinkContainer,
+  ImgLink,
+  TitleLink,
   DescriptionContent,
   TitleDescriptionContent,
   TextDescriptionContent,
   StatusView,
-  TitleStatusView,
   BadgeStatus,
 };

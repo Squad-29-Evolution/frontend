@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Container = styled(Link)`
+const Container = styled.button`
   max-width: 220px;
   width: 100%;
   height: 175px;
@@ -12,6 +11,7 @@ const Container = styled(Link)`
   border-radius: 10px;
   background: linear-gradient(180deg, #6b5a4c 99.99%, rgba(46, 46, 46, 0) 100%);
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
