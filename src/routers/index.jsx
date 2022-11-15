@@ -15,6 +15,8 @@ import AdminContents from "../pages/AdminContents";
 import Content from "../pages/Content";
 import Courses from "../pages/Courses";
 import TrailsUser from "../pages/TrailsUser";
+import SelectTrail from "../pages/SelectTrail";
+import VerifyFirstLogin from "./VerifyFirstLogin";
 
 const Routers = () => {
   return (
@@ -22,12 +24,15 @@ const Routers = () => {
       <Routes>
         {/* user routes */}
         <Route element={<PrivateRoute />}>
-          <Route element={<PrivateArea />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/content" element={<Content />} />
-            <Route path="/trails" element={<TrailsUser />} />
+          <Route element={<VerifyFirstLogin />}>
+            <Route element={<PrivateArea />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/content" element={<Content />} />
+              <Route path="/trails" element={<TrailsUser />} />
+            </Route>
           </Route>
+          <Route path="/selectyoutrail" element={<SelectTrail />} />
         </Route>
 
         {/* admin routes */}
