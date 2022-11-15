@@ -77,7 +77,7 @@ const TextDescriptionContent = styled.p`
 `;
 
 const StatusView = styled.div`
-  display: ${(props) => (props.concluded ? "flex" : "none")};
+  display: flex;
   align-items: center;
   margin-top: 15px;
 `;

@@ -1,6 +1,5 @@
 import ContentItem from "./components/ContentItem";
 import S from "./style";
-import QA from "../../assets/quality.svg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api";
@@ -23,26 +22,41 @@ const Courses = () => {
         const salvedTrails = await api.get(`/getSalvedTrails/${id}`, config);
 
         if (salvedTrails.data) {
-          let contentsUser = [];
-          let allContents = await api.get("/contents");
-          let concludedCourses = await api.get(
-            `/getallconcludedcourse/${id}&${parseInt(trail_id)}`,
-            config,
+          const { data: allContents } = await api.get("/contents");
+
+          const trails = salvedTrails.data;
+
+          const getAllConcludedCourses = async (trail_id) => {
+            const { data } = await api.get(
+              `/getallconcludedcourse/${id}&${parseInt(trail_id)}`,
+              config,
+            );
+            return data;
+          };
+          const listOnfConcludedCourses = trails.map(({ trail_id }) => {
+            return getAllConcludedCourses(trail_id);
+          });
+
+          const allConcludedCourses = await Promise.all(
+            listOnfConcludedCourses,
           );
 
-          salvedTrails.data.map((itemTrail) => {
-            allContents.data.map((item) => {
-              if (item.trail_id == itemTrail.trail_id) {
-                contentsUser.push(item);
-              }
+          const AllCourses = allConcludedCourses.map((Listconcludedcourse) => {
+            return Listconcludedcourse.map((concludedcourse) => {
+              return allContents.map((course) => {
+                if (course.id == concludedcourse.contentsId) {
+                  return { ...course, concluded: true };
+                }
+                return { ...course, concluded: false };
+              });
             });
           });
 
-          contentsUser.map((item) => {
-            item.visible = false;
-          });
-
-          setContents(contentsUser);
+          const contents = AllCourses.reduce(
+            (list, sub) => list.concat(sub),
+            [],
+          );
+          setContents([...contents[0]]);
         }
       } else {
         const response = await api.get("/contents");
@@ -72,7 +86,7 @@ const Courses = () => {
     }
 
     getResponse();
-  }, []);
+  }, [trail_id]);
 
   return (
     <S.Container>
@@ -82,11 +96,13 @@ const Courses = () => {
           {contents.map((item) => {
             return (
               <ContentItem
-                img={QA}
+                key={item.id}
                 to={`/content/${item.id}/${item.trail_id}`}
                 title={item.title}
                 description={item.description}
                 concluded={item.concluded}
+                trail={item.trail?.name}
+                icon={item.trail?.icon}
               />
             );
           })}
