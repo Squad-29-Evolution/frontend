@@ -80,7 +80,7 @@ const Table = ({ data, setData, notify, token }) => {
             ))
           ) : (
             <S.NotContent>
-              <p>Não foi encontrado nenhuma trilha</p>
+              <p>Não foi encontrado nenhuma conteudo</p>
             </S.NotContent>
           )}
         </S.Body>

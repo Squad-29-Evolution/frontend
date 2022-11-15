@@ -10,7 +10,7 @@ import Modal from "./components/Modal";
 import { toast } from "react-toastify";
 
 const AdminContents = () => {
-  useDocumentTitle("Trilhas");
+  useDocumentTitle("Conteúdos");
 
   const { authUser } = useAuth();
   const { token } = authUser;
