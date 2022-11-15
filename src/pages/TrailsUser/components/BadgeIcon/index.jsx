@@ -1,6 +1,6 @@
 import S from "./style";
 
-const BadgeLink = (props) => {
+const BadgeIcon = (props) => {
   return (
     <S.Container>
       <S.Img src={props.img} />
@@ -9,4 +9,4 @@ const BadgeLink = (props) => {
   );
 };
 
-export default BadgeLink;
+export default BadgeIcon;

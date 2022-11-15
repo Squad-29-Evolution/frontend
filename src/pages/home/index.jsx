@@ -2,7 +2,7 @@ import LevelBadge from "./components/LevelBadge";
 import Arrow from "../../assets/arrow.svg";
 import S from "./style";
 import CourseBadge from "./components/CourseBadge";
-import BadgeLink from "./components/BadgeLink";
+import BadgeLink from "../../components/BadgeLink";
 import UX from "../../assets/Intelligence.svg";
 import DEV from "../../assets/code.svg";
 import QA from "../../assets/quality.svg";

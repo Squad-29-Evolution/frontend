@@ -1,12 +1,12 @@
 import S from "./style";
 
-const Badge = (props) => {
+const BadgeLink = (props) => {
   return (
-    <S.Container>
+    <S.Container to={props.to}>
       <S.Img src={props.img} />
       <S.Title>{props.title}</S.Title>
     </S.Container>
   );
 };
 
-export default Badge;
+export default BadgeLink;
