@@ -29,10 +29,18 @@ const Logo = styled.div`
   max-width: 71px;
   max-height: 52px;
   margin-left: 20px;
+  position: relative;
 
   & img {
     width: 100%;
     height: 100%;
+  }
+
+  & a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
   }
 
   @media (max-width: 800px) {

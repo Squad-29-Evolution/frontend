@@ -41,8 +41,7 @@ const Htext = styled.p`
 
 const Body = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
 `;
 
 const BRow = styled.div`

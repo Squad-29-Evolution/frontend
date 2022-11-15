@@ -10,7 +10,7 @@ const WrapperCount = ({ usersCount }) => {
 
       <S.CountBlock className="middle">
         <S.Number>{usersCount.admin}</S.Number>
-        <S.Text>administradores</S.Text>
+        <S.Text>Convidados</S.Text>
       </S.CountBlock>
 
       <S.CountBlock>

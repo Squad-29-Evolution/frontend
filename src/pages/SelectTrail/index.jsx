@@ -59,8 +59,12 @@ const SelectTrail = () => {
         <S.WrapperGeneric>
           <S.Title>Trilhas</S.Title>
           <S.WrapperTrail>
-            {trailList.map(({ name, icon, id }) => (
-              <S.CardContent key={id} onClick={() => SalveFirstTrail(id)}>
+            {trailList.map(({ name, icon, id, description }) => (
+              <S.CardContent
+                title={description}
+                key={id}
+                onClick={() => SalveFirstTrail(id)}
+              >
                 <S.ContentImg src={icon} alt="logo " />
                 <S.ContentName>{name}</S.ContentName>
               </S.CardContent>

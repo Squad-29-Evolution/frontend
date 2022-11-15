@@ -6,7 +6,7 @@ const schema = yup
       .string()
       .required("Esse campo é obrigatório")
       .min(2, "Mínimo de 2 caracteres")
-      .max(10, "Tamanho máximo de 10 caracteres"),
+      .max(100, "Tamanho máximo de 100 caracteres"),
 
     description: yup
       .string()
