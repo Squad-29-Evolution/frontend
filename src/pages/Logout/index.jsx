@@ -6,6 +6,7 @@ const Logout = () => {
   const { removeUserInfo } = useAuth();
 
   useEffect(() => {
+    localStorage.removeItem("firstLogin");
     removeUserInfo();
   }, []);
   return <Navigate to="/login" replace={true} />;
