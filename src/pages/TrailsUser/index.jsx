@@ -23,21 +23,23 @@ const TrailsUser = () => {
 
       const response = await api.get(`/getSalvedTrails/${user.id}`, config);
 
-      response.data.map(async (item) => {
-        const percent = await api.get(
-          `/getpercentconcludedtrail/${user.id}&${item.trail_id}`,
-          config,
-        );
+      await Promise.all(
+        response.data.map(async (item) => {
+          const percent = await api.get(
+            `/getpercentconcludedtrail/${user.id}&${item.trail_id}`,
+            config,
+          );
 
-        let trailsResponse = await (
-          await api.get(`/trail/${item.trail_id}`)
-        ).data;
+          let trailsResponse = await (
+            await api.get(`/trail/${item.trail_id}`)
+          ).data;
 
-        trailsResponse.percent = percent.data;
+          trailsResponse.percent = percent.data;
 
-        trailsData.push(trailsResponse);
-        setTrails(trailsData);
-      });
+          trailsData.push(trailsResponse);
+        }),
+      );
+      setTrails(trailsData);
 
       setIsLoading(false);
     }

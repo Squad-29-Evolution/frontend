@@ -25,7 +25,7 @@ const Content = () => {
   };
 
   const notify = () =>
-    toast.error("Concluído com sucesso", {
+    toast.success("Concluído com sucesso", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,

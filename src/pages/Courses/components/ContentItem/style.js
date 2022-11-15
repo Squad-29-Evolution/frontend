@@ -77,17 +77,9 @@ const TextDescriptionContent = styled.p`
 `;
 
 const StatusView = styled.div`
-  display: flex;
+  display: ${(props) => (props.concluded ? "flex" : "none")};
   align-items: center;
   margin-top: 15px;
-`;
-
-const TitleStatusView = styled.p`
-  font-size: 1rem;
-  font-family: "Metropolis", sans-serif;
-  color: #e5e5e5;
-  margin-bottom: 5px;
-  margin-right: 15px;
 `;
 
 const BadgeStatus = styled.div`
@@ -102,6 +94,7 @@ const BadgeStatus = styled.div`
     props.concluded == true ? "#16a085" : "rgba(85, 85, 85, 0.87)"};
   color: #e5e5e5;
   text-transform: uppercase;
+  margin-bottom: 10px;
 `;
 
 export default {
@@ -113,6 +106,5 @@ export default {
   TitleDescriptionContent,
   TextDescriptionContent,
   StatusView,
-  TitleStatusView,
   BadgeStatus,
 };

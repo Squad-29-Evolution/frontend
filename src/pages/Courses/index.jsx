@@ -19,15 +19,14 @@ const Courses = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
 
-      if (trail_id == 0) {
+      if (parseInt(trail_id) == 0) {
         const salvedTrails = await api.get(`/getSalvedTrails/${id}`, config);
 
-        let contentsUser = [];
-
         if (salvedTrails.data) {
+          let contentsUser = [];
           let allContents = await api.get("/contents");
           let concludedCourses = await api.get(
-            `/getallconcludedcourse/${id}&${trail_id}`,
+            `/getallconcludedcourse/${id}&${parseInt(trail_id)}`,
             config,
           );
 
@@ -39,37 +38,35 @@ const Courses = () => {
             });
           });
 
-          concludedCourses.data.map((itemConcluded) => {
-            contentsUser.map((item) => {
-              if (itemConcluded.contentsId == item.id) {
+          contentsUser.map((item) => {
+            item.visible = false;
+          });
+
+          setContents(contentsUser);
+        }
+      } else {
+        const response = await api.get("/contents");
+        let concludedCoursesTrail = await api.get(
+          `/getallconcludedcourse/${id}&${parseInt(trail_id)}`,
+          config,
+        );
+
+        const contentData = response.data.filter(
+          (item) => item.trail_id == parseInt(trail_id),
+        );
+
+        concludedCoursesTrail.data.map((itemConcluded) => {
+          contentData.map((item) => {
+            if (itemConcluded.contentsId == item.id) {
+              if (itemConcluded.status == "FINISHED") {
                 item.concluded = true;
               } else {
                 item.concluded = false;
               }
-            });
-          });
-        }
-
-        setContents(contentsUser);
-      } else {
-        const response = await api.get("/contents");
-        let concludedCourses = await api.get(
-          `/getallconcludedcourse/${id}&${trail_id}`,
-          config,
-        );
-        const contentData = response.data.filter(
-          (item) => item.trail_id == trail_id,
-        );
-
-        concludedCourses.data.map((itemConcluded) => {
-          contentData.map((item) => {
-            if (itemConcluded.contentsId == item.id) {
-              item.concluded = true;
-            } else {
-              item.concluded = false;
             }
           });
         });
+
         setContents(contentData);
       }
     }
