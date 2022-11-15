@@ -65,7 +65,7 @@ const Home = () => {
         <S.CoursesSection>
           <S.HeaderCoursesSection>
             <S.TitleHeader>Meus Cursos</S.TitleHeader>
-            <S.LinkHeaderCoursesSection to={`/courses`}>
+            <S.LinkHeaderCoursesSection to={`/courses/${0}`}>
               Ver mais
               <S.ImgArrow src={Arrow} alt="Ícone de ver mais" />
             </S.LinkHeaderCoursesSection>

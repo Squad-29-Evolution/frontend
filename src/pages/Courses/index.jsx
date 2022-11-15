@@ -4,18 +4,46 @@ import QA from "../../assets/quality.svg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api";
+import useAuth from "../../hooks/useAuth";
 
 const Courses = () => {
   const { trail_id } = useParams();
+  const { authUser, getUserInfo } = useAuth();
   const [contents, setContents] = useState([]);
+  const { id } = getUserInfo();
+  const { token } = authUser;
 
   useEffect(() => {
     async function getResponse() {
-      const response = await api.get("/contents");
-      const contentData = response.data.filter(
-        (item) => item.trail_id == trail_id,
-      );
-      setContents(contentData);
+      if (trail_id == 0) {
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+
+        const salvedTrails = await api.get(`/getSalvedTrails/${id}`, config);
+
+        let contentsUser = [];
+
+        if (salvedTrails.data) {
+          let allContents = await api.get("/contents");
+
+          salvedTrails.data.map((itemTrail) => {
+            allContents.data.map((item) => {
+              if (item.trail_id == itemTrail.trail_id) {
+                contentsUser.push(item);
+              }
+            });
+          });
+        }
+
+        setContents(contentsUser);
+      } else {
+        const response = await api.get("/contents");
+        const contentData = response.data.filter(
+          (item) => item.trail_id == trail_id,
+        );
+        setContents(contentData);
+      }
     }
 
     getResponse();
