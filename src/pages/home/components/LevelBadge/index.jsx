@@ -5,11 +5,9 @@ const LevelBadge = ({ xp }) => {
   console.log(xp);
 
   const getPercent = () => {
-    const percentage = (xp / 100) * 100;
+    const percentage = (xp / 900) * 100;
     return percentage;
   };
-
-  console.log(getPercent());
 
   return (
     <S.Container>
@@ -20,7 +18,7 @@ const LevelBadge = ({ xp }) => {
         </S.RowLevels>
         <S.Progress percentage={getPercent()}></S.Progress>
         <S.TextInstructionLevel>
-          {`Mais ${100 - xp} XP para o próximo nível!`}
+          {`Mais ${900 - xp} XP para o próximo nível!`}
         </S.TextInstructionLevel>
         <S.IconStar src={Star} alt="Ícone de estrela" />
       </S.GenericContaine>
