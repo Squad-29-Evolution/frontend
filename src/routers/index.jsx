@@ -13,7 +13,6 @@ import Logout from "../pages/Logout";
 import AdminTrails from "../pages/AdminTrails";
 import AdminContents from "../pages/AdminContents";
 import Content from "../pages/Content";
-import Trails from "../pages/Trails";
 import Courses from "../pages/Courses";
 import TrailsUser from "../pages/TrailsUser";
 
