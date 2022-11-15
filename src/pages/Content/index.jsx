@@ -1,63 +1,109 @@
 import S from "./style";
 import Code from "../../assets/code.svg";
 import Link from "../../assets/link.svg";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import api from "../../api";
+import Loading from "../../components/Loading";
+import useAuth from "../../hooks/useAuth";
 
 const Content = () => {
+  const { id, trail_id } = useParams();
+  const { authUser, getUserInfo } = useAuth();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [concluded, setConcluded] = useState(false);
+  const { token } = authUser;
+  const user = getUserInfo();
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  useEffect(() => {
+    async function getResponse() {
+      setIsLoading(true);
+
+      const concludedCourses = await api.get(
+        `/getallconcludedcourse/${user.id}&${trail_id}`,
+        config,
+      );
+      const contentData = await api.get(`/contents/${id}`);
+
+      console.log(concludedCourses.data);
+      console.log(contentData.data);
+
+      concludedCourses.data.map((item) => {
+        if (item.contentsId == id) {
+          setConcluded(true);
+        }
+      });
+
+      setTitle(contentData.data.title);
+      setDescription(contentData.data.description);
+      setLink(contentData.data.link);
+      setIsLoading(false);
+    }
+
+    getResponse();
+  }, []);
+
+  const setConcludedContent = async () => {
+    try {
+      await api.post(
+        "/salveconcludedcourse",
+        {
+          user_id: user.id,
+          trail_id: trail_id,
+          content_id: id,
+        },
+        config,
+      );
+
+      console.log("clicou");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <S.Container>
       <S.Header>
         <S.Img src={Code} />
-        <S.Title>Fundamentos</S.Title>
+        <S.Title>{title}</S.Title>
       </S.Header>
       <S.Content>
         <S.TitleDescription>Introdução</S.TitleDescription>
-        <S.Description>
-          Praesent varius auctor pretium. Fusce luctus libero at orci suscipit
-          blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam
-          ultrices, finibus nisl in, auctor neque. Fusce sodales erat eget
-          tellus efficitur, sit amet venenatis leo interdum. Praesent dictum,
-          enim vitae elementum dignissim, lorem lacus congue lacus, vel
-          vulputate magna odio sed felis. Nunc tempor tellus quis risus
-          tristique rutrum. Mauris elementum elit enim, vel facilisis odio
-          viverra nec. Maecenas aliquam, dolor a posuere aliquet, lorem turpis
-          gravida diam, vitae finibus erat mi in magna. Duis iaculis quam ac
-          magna vehicula, in fermentum augue tempus. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam
-          vel arcu quis risus tempor sagittis.
-        </S.Description>
+        <S.Description>{description}</S.Description>
         <S.Table>
           <thead>
             <tr>
-              <S.HeaderTable>Databases</S.HeaderTable>
+              <S.HeaderTable>Links</S.HeaderTable>
             </tr>
           </thead>
           <tbody>
             <tr>
               <S.ContentTable>
                 <S.ImgLink src={Link} alt="Ícone de link" />
-                <S.TextContentTable
-                  href="www.varius auctor pretium.com.br
-"
-                >
-                  www.varius auctor pretium.com.br
-                </S.TextContentTable>
-              </S.ContentTable>
-            </tr>
-            <tr>
-              <S.ContentTable>
-                <S.ImgLink src={Link} alt="Ícone de link" />
-                <S.TextContentTable
-                  href="www.varius auctor pretium.com.br
-"
-                >
-                  www.varius auctor pretium.com.br
+                <S.TextContentTable href={link} target={"_blank"}>
+                  {link}
                 </S.TextContentTable>
               </S.ContentTable>
             </tr>
           </tbody>
         </S.Table>
 
-        <S.ButtonConcluded>
+        <S.ButtonConcluded
+          onClick={setConcludedContent}
+          disabled={concluded == true ? true : false}
+        >
           <S.TextButtonConcluded>Concluído</S.TextButtonConcluded>
         </S.ButtonConcluded>
       </S.Content>

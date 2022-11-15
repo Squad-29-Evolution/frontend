@@ -1,55 +1,44 @@
 import ContentItem from "./components/ContentItem";
 import S from "./style";
 import QA from "../../assets/quality.svg";
-import BadgeLink from "../../components/BadgeLink";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../api";
 
 const Courses = () => {
+  const { trail_id } = useParams();
+  const [contents, setContents] = useState([]);
+
+  useEffect(() => {
+    async function getResponse() {
+      const response = await api.get("/contents");
+      const contentData = response.data.filter(
+        (item) => item.trail_id == trail_id,
+      );
+      setContents(contentData);
+    }
+
+    getResponse();
+  }, []);
+
   return (
     <S.Container>
       <S.ContentsCourse>
-        <S.TitleSection>Dev</S.TitleSection>
+        <S.TitleSection>Cursos</S.TitleSection>
         <S.ViewContents>
-          <ContentItem
-            img={QA}
-            title="Fundamentos"
-            description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
-"
-            concluded={false}
-          />
-          <ContentItem
-            img={QA}
-            title="Fundamentos"
-            description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e 
-"
-            concluded={true}
-          />
-          <ContentItem
-            img={QA}
-            title="Fundamentos"
-            description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
-"
-            concluded={true}
-          />
-          <ContentItem
-            img={QA}
-            title="Fundamentos"
-            description="Praesent varius auctor pretium. Fusce luctus libero at orci suscipit blandit. Nulla blandit metus id ex laoreet venenatis. Fusce nec quam ultrices, finibus nisl in, auctor neque. Fusce sodales e
-"
-            concluded={false}
-          />
+          {contents.map((item) => {
+            return (
+              <ContentItem
+                img={QA}
+                to={`/content/${item.id}/${item.trail_id}`}
+                title={item.title}
+                description={item.description}
+                concluded={false}
+              />
+            );
+          })}
         </S.ViewContents>
       </S.ContentsCourse>
-      <S.CoursesView>
-        <S.TitleSection>Cursos</S.TitleSection>
-        <S.ContentCoursesView>
-          <BadgeLink img={QA} title="DEV" />
-          <BadgeLink img={QA} title="DEV" />
-          <BadgeLink img={QA} title="DEV" />
-          <BadgeLink img={QA} title="DEV" />
-          <BadgeLink img={QA} title="DEV" />
-          <BadgeLink img={QA} title="DEV" />
-        </S.ContentCoursesView>
-      </S.CoursesView>
     </S.Container>
   );
 };

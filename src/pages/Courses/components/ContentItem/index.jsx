@@ -1,10 +1,13 @@
 import S from "./style";
-import BadgeLink from "../../../../components/BadgeLink";
+import QA from "../../../../assets/quality.svg";
 
 const ContentItem = (props) => {
   return (
     <S.Container>
-      <BadgeLink to={props.to} img={props.img} title={props.title} />
+      <S.LinkContainer to={props.to}>
+        <S.ImgLink src={QA} />
+        <S.TitleLink>{props.title}</S.TitleLink>
+      </S.LinkContainer>
       <S.DescriptionContent>
         <S.TitleDescriptionContent>{props.title}</S.TitleDescriptionContent>
         <S.TextDescriptionContent>{props.description}</S.TextDescriptionContent>
