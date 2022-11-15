@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import BGImg from "../../assets/bg.png";
 
 const Container = styled.div`
@@ -48,6 +48,8 @@ const Main = styled.main`
 const WrapperGeneric = styled.div`
   width: 100%;
   max-width: 1000px;
+  box-sizing: border-box;
+  margin: 10px;
 `;
 
 const Title = styled.h1`
@@ -64,10 +66,8 @@ const WrapperTrail = styled.div`
     rgb(30 30 30 / 79%) 100%
   );
   border: 1px solid #1e1e1e;
-  border-radius: 20px;
   width: 100%;
   max-width: 1000px;
-  margin: 0 20px;
   height: 424px;
   z-index: 2;
   display: flex;
@@ -76,11 +76,54 @@ const WrapperTrail = styled.div`
   flex-wrap: wrap;
 `;
 
+const ContentBorder = css`
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+`;
+
+const ContentBorderHover = css`
+  height: 100%;
+  width: 100%;
+  border: 2px solid #ffffff;
+  transition: height 0.1s linear, width 0.1s linear 0.1s;
+`;
+
 const CardContent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  padding: 5px;
+
+  &:before {
+    ${ContentBorder}
+    bottom: 0;
+    left: 0;
+  }
+
+  &:after {
+    ${ContentBorder}
+    top: 0;
+    right: 0;
+  }
+
+  &:hover::before {
+    ${ContentBorderHover}
+    border-right: none;
+    border-bottom: none;
+  }
+
+  &:hover::after {
+    ${ContentBorderHover}
+    border-left: none;
+    border-top: none;
+  }
 `;
 
 const ContentImg = styled.img`
