@@ -42,6 +42,13 @@ const Form = () => {
     try {
       const { data } = await api.post("/users/login", formData);
       salveUserInfo(data, data.token);
+      await api.post(
+        "/dates/salve",
+        { uuid: data.id },
+        {
+          headers: { Authorization: `Bearer ${data.token}` },
+        },
+      );
 
       return navigate("/");
     } catch (error) {

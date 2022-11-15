@@ -9,7 +9,7 @@ import Loading from "../../components/Loading";
 import Modal from "./components/Modal";
 import { toast } from "react-toastify";
 
-const Trails = () => {
+const AdminTrails = () => {
   useDocumentTitle("Trilhas");
 
   const { authUser } = useAuth();
@@ -109,4 +109,4 @@ const Trails = () => {
   );
 };
 
-export default Trails;
+export default AdminTrails;
