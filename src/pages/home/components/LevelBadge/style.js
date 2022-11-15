@@ -6,10 +6,20 @@ const Container = styled.div`
   height: 189px;
   border-radius: 10px;
   background: linear-gradient(180deg, #6b5a4c 99.99%, rgba(46, 46, 46, 0) 100%);
-  padding: 16px 84px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+`;
+
+const GenericContaine = styled.div`
+  max-width: 377px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const RowLevels = styled.div`
@@ -34,15 +44,16 @@ const Progress = styled.div`
   background: rgba(46, 46, 46, 0.65);
   border-radius: 20px;
   margin-bottom: 10px;
-`;
+  overflow: hidden;
 
-const ProgressBarLevel = styled.div`
-  position: absolute;
-  z-index: 1;
-  background: linear-gradient(180deg, #ff5a23 15.1%, #ffa000 100%);
-  border-radius: 20px;
-  padding: 10px 0;
-  width: ${(props) => props.width}%;
+  &:after {
+    content: "";
+    height: 100%;
+    width: ${({ percentage }) => `${percentage}%`};
+    background: linear-gradient(180deg, #ff5a23 15.1%, #ffa000 100%);
+    position: absolute;
+    inset: 0;
+  }
 `;
 
 const TextInstructionLevel = styled.p`
@@ -62,7 +73,7 @@ export default {
   RowLevels,
   TextLevel,
   Progress,
-  ProgressBarLevel,
   TextInstructionLevel,
   IconStar,
+  GenericContaine,
 };
