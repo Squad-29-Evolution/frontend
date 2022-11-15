@@ -41,9 +41,24 @@ const Courses = () => {
             listOnfConcludedCourses,
           );
 
+          const filterContents = trails.map((trail) => {
+            return allContents.filter(
+              (course) => course.trail_id == trail.trail_id,
+            );
+          });
+
+          const reduceFilterContents = filterContents.reduce(
+            (list, sub) => list.concat(sub),
+            [],
+          );
+
+          if (allConcludedCourses[0].length == 0) {
+            return setContents(reduceFilterContents);
+          }
+
           const AllCourses = allConcludedCourses.map((Listconcludedcourse) => {
             return Listconcludedcourse.map((concludedcourse) => {
-              return allContents.map((course) => {
+              return reduceFilterContents.map((course) => {
                 if (course.id == concludedcourse.contentsId) {
                   return { ...course, concluded: true };
                 }
