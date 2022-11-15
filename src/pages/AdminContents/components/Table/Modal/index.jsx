@@ -124,7 +124,7 @@ const Modal = ({ closeModal, setData, notify, token, localContent }) => {
   return (
     <>
       <S.Container>
-        <S.Title>Adicionar novo conteúdo</S.Title>
+        <S.Title>Editar ou Excluir Conteúdo</S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           {isLoading ? (
             <LoadingSmall />
