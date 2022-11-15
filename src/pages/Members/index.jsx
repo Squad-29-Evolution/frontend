@@ -27,17 +27,18 @@ const Members = () => {
   const [searchData, setSearchData] = useState([]);
 
   const setTotalMember = (data) => {
-    const totalUser = data.filter((user) => {
+    console.log(data);
+    /* const totalUser = data.filter((user) => {
       return user.role == "USER";
-    });
+    }); */
 
-    const totalAdmin = data.filter((user) => {
-      return user.role == "ADMIN";
+    const totalAdminWithoutLogin = data.filter((user) => {
+      return user.role == "ADMIN" && user.Dates?.length == 0;
     });
 
     return setUsersCount({
-      member: totalUser.length,
-      admin: totalAdmin.length,
+      member: data.length,
+      admin: totalAdminWithoutLogin.length,
     });
   };
 
