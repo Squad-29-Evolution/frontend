@@ -6,12 +6,16 @@ import BadgeLink from "../../components/BadgeLink";
 import UX from "../../assets/Intelligence.svg";
 import DEV from "../../assets/code.svg";
 import QA from "../../assets/quality.svg";
+import useAuth from "../../hooks/useAuth";
 
 const Home = () => {
+  const { getUserInfo } = useAuth();
+  const { xp } = getUserInfo();
+
   return (
     <S.Container>
       <S.ContentSection>
-        <LevelBadge />
+        <LevelBadge xp={xp} />
         <S.CoursesSection>
           <S.HeaderCoursesSection>
             <S.TitleHeader>Meus Cursos</S.TitleHeader>
