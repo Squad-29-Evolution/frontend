@@ -80,6 +80,10 @@ const StatusView = styled.div`
   display: ${(props) => (props.concluded ? "flex" : "none")};
   align-items: center;
   margin-top: 15px;
+
+  @media (max-width: 530px) {
+    width: 100%;
+  }
 `;
 
 const BadgeStatus = styled.div`
@@ -95,6 +99,10 @@ const BadgeStatus = styled.div`
   color: #e5e5e5;
   text-transform: uppercase;
   margin-bottom: 10px;
+
+  @media (max-width: 530px) {
+    width: 220px;
+  }
 `;
 
 export default {

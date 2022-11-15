@@ -6,7 +6,7 @@ const Container = styled.div`
   margin-bottom: 25px;
   width: 80%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 530px) {
     flex-direction: column;
   }
 `;
@@ -25,6 +25,10 @@ const Content = styled.div`
 const StatusView = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 530px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const TitleStatus = styled.h1`
@@ -49,6 +53,10 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+  @media (max-width: 530) {
+    width: 100%;
+  }
 `;
 
 export default { Container, Content, StatusView, TitleStatus, Percent, Button };

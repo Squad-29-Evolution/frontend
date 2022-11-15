@@ -82,6 +82,7 @@ const Courses = () => {
           {contents.map((item) => {
             return (
               <ContentItem
+                key={item.id}
                 img={QA}
                 to={`/content/${item.id}/${item.trail_id}`}
                 title={item.title}
