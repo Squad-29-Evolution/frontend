@@ -28,11 +28,11 @@ const Routers = () => {
             <Route element={<PrivateArea />}>
               <Route path="/" element={<Home />} />
               <Route path="/courses/:trail_id" element={<Courses />} />
-              <Route path="/content/:id/:trail_id" element={<Content />} />
               <Route path="/trails" element={<TrailsUser />} />
             </Route>
           </Route>
           <Route path="/selectyoutrail" element={<SelectTrail />} />
+          <Route path="/content/:id/:trail_id" element={<Content />} />
         </Route>
 
         {/* admin routes */}

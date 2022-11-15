@@ -15,6 +15,7 @@ const Content = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 
   @media (max-width: 870px) {
     padding: 0 25px;
@@ -62,7 +63,7 @@ const Table = styled.table`
   max-width: 739px;
   width: 100%;
   border: 2px solid #bfbfbf;
-  margin: 20px 0 41px 0;
+  margin: 20px 0 41px;
   background: rgba(85, 85, 85, 0.87);
   table-layout: fixed;
 `;
@@ -121,7 +122,8 @@ const ButtonConcluded = styled.button`
       : "linear-gradient(180deg, #ff8408 0%, #ff5c23 100%)"};
   border-radius: 5px;
   align-self: center;
-  cursor: ${(props) => (props.concluded ? "default" : "pointer")};
+  cursor: ${(props) => (props.concluded ? "not-allowed" : "pointer")};
+  border: ${({ concluded }) => (concluded ? "2px solid #ff621f" : "none")};
 `;
 
 const TextButtonConcluded = styled.p`
