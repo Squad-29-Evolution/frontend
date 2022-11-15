@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import api from "../../api";
 import Loading from "../../components/Loading";
 import useAuth from "../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const Content = () => {
   const { id, trail_id } = useParams();
@@ -22,6 +23,18 @@ const Content = () => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
+
+  const notify = () =>
+    toast.error("Concluído com sucesso", {
+      position: "top-right",
+      autoClose: 1800,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   useEffect(() => {
     async function getResponse() {
@@ -63,7 +76,7 @@ const Content = () => {
         config,
       );
 
-      console.log("clicou");
+      notify();
     } catch (error) {
       console.log(error);
     }
@@ -75,6 +88,7 @@ const Content = () => {
 
   return (
     <S.Container>
+      <ToastContainer />
       <S.Header>
         <S.Img src={Code} />
         <S.Title>{title}</S.Title>
@@ -104,7 +118,9 @@ const Content = () => {
           onClick={setConcludedContent}
           disabled={concluded == true ? true : false}
         >
-          <S.TextButtonConcluded>Concluído</S.TextButtonConcluded>
+          <S.TextButtonConcluded>
+            {concluded == true ? "Já concluído" : "Concluído"}
+          </S.TextButtonConcluded>
         </S.ButtonConcluded>
       </S.Content>
     </S.Container>

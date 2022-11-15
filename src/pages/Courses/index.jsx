@@ -15,17 +15,21 @@ const Courses = () => {
 
   useEffect(() => {
     async function getResponse() {
-      if (trail_id == 0) {
-        const config = {
-          headers: { Authorization: `Bearer ${token}` },
-        };
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
 
+      if (trail_id == 0) {
         const salvedTrails = await api.get(`/getSalvedTrails/${id}`, config);
 
         let contentsUser = [];
 
         if (salvedTrails.data) {
           let allContents = await api.get("/contents");
+          let concludedCourses = await api.get(
+            `/getallconcludedcourse/${id}&${trail_id}`,
+            config,
+          );
 
           salvedTrails.data.map((itemTrail) => {
             allContents.data.map((item) => {
@@ -34,14 +38,38 @@ const Courses = () => {
               }
             });
           });
+
+          concludedCourses.data.map((itemConcluded) => {
+            contentsUser.map((item) => {
+              if (itemConcluded.contentsId == item.id) {
+                item.concluded = true;
+              } else {
+                item.concluded = false;
+              }
+            });
+          });
         }
 
         setContents(contentsUser);
       } else {
         const response = await api.get("/contents");
+        let concludedCourses = await api.get(
+          `/getallconcludedcourse/${id}&${trail_id}`,
+          config,
+        );
         const contentData = response.data.filter(
           (item) => item.trail_id == trail_id,
         );
+
+        concludedCourses.data.map((itemConcluded) => {
+          contentData.map((item) => {
+            if (itemConcluded.contentsId == item.id) {
+              item.concluded = true;
+            } else {
+              item.concluded = false;
+            }
+          });
+        });
         setContents(contentData);
       }
     }
@@ -61,7 +89,7 @@ const Courses = () => {
                 to={`/content/${item.id}/${item.trail_id}`}
                 title={item.title}
                 description={item.description}
-                concluded={false}
+                concluded={item.concluded}
               />
             );
           })}

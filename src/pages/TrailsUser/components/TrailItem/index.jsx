@@ -15,7 +15,7 @@ const TrailItem = (props) => {
 
   return (
     <S.Container>
-      <BadgeIcon img={props.img} title={props.title} />
+      <BadgeIcon img={props.img} title={props.title} to={props.to} />
       <S.Content>
         <S.StatusView>
           <S.TitleStatus>Status</S.TitleStatus>

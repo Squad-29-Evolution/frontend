@@ -13,8 +13,8 @@ const TrailsUser = () => {
   const [trails, setTrails] = useState([]);
 
   useEffect(() => {
-    let trailsData = [];
     async function getResponse() {
+      let trailsData = [];
       setIsLoading(true);
 
       const config = {
@@ -28,6 +28,7 @@ const TrailsUser = () => {
           `/getpercentconcludedtrail/${user.id}&${item.trail_id}`,
           config,
         );
+
         let trailsResponse = await (
           await api.get(`/trail/${item.trail_id}`)
         ).data;
@@ -35,13 +36,13 @@ const TrailsUser = () => {
         trailsResponse.percent = percent.data;
 
         trailsData.push(trailsResponse);
+        setTrails(trailsData);
       });
 
       setIsLoading(false);
     }
 
     getResponse();
-    setTrails(trailsData);
   }, []);
 
   if (isLoading) {
@@ -56,6 +57,7 @@ const TrailsUser = () => {
           return (
             <TrailItem
               key={item.id}
+              to={`/courses/${item.id}`}
               percent={item.percent}
               title={item.name}
               img={item.icon}

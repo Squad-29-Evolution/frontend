@@ -24,7 +24,7 @@ const Sidebar = ({ isOpen, closedModal }) => {
           <S.Generic>
             <S.MenuList>
               <S.Item>
-                <S.MenuLink to="/courses">
+                <S.MenuLink to={`/courses/${0}`}>
                   <img src={CourseIcon} alt="icone de cursos" />
                   Meus cursos
                 </S.MenuLink>
