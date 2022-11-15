@@ -9,7 +9,7 @@ const Header = ({ admin, onClick }) => {
     <S.Container>
       <S.FixedHeader>
         <S.Generic>
-          <Button onClick={onClick} />
+          <Button admin={admin} onClick={onClick} />
           <S.Logo title="Ir para a tela incial">
             <img src={Logo} alt="logo orange evolution" />
             <Link to="/" />
