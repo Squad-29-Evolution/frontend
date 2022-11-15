@@ -12,8 +12,7 @@ const Container = styled.div`
   ${NavCss}
 
   @media (max-width: 800px) {
-    display: none;
-
+    max-width: 0;
     &.active {
       max-width: 276px;
       width: 100%;

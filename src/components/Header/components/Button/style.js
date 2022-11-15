@@ -6,7 +6,6 @@ const buttonLine = css`
   width: 30px;
   height: 4px;
   border-radius: 2px;
-  background: #2e2e2e;
   left: 0;
 `;
 
@@ -23,14 +22,17 @@ const Button = styled.button`
     ${buttonLine};
     top: 50%;
     transform: translatey(-50%);
+    background: ${({ admin }) => (admin ? "#2e2e2e" : "#fff")};
   }
   &::before {
     ${buttonLine}
     top: 0;
+    background: ${({ admin }) => (admin ? "#2e2e2e" : "#fff")};
   }
   &::after {
     ${buttonLine};
     bottom: 0;
+    background: ${({ admin }) => (admin ? "#2e2e2e" : "#fff")};
   }
   @media (max-width: 860px) {
     display: block;

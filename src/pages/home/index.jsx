@@ -44,7 +44,7 @@ const Home = () => {
 
         setTrails(allTrails.data);
         setContents(contentsUser.slice(0, 4));
-        console.log(contentsUser);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -77,6 +77,8 @@ const Home = () => {
                   key={item.id}
                   to={`/content/${item.id}/${item.trail_id}`}
                   title={item.title}
+                  trail={item.trail?.name}
+                  icon={item.trail?.icon}
                 />
               );
             })}

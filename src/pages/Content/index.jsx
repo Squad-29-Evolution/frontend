@@ -8,6 +8,7 @@ import api from "../../api";
 import Loading from "../../components/Loading";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import Header from "../../components/Header";
 
 const Content = () => {
   const { id, trail_id } = useParams();
@@ -17,6 +18,7 @@ const Content = () => {
   const [link, setLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [concluded, setConcluded] = useState(false);
+  const [icon, setIcon] = useState(Orange);
   const { token } = authUser;
   const user = getUserInfo();
 
@@ -24,18 +26,18 @@ const Content = () => {
     headers: { Authorization: `Bearer ${token}` },
   };
 
-  const notify = () =>
-    toast.success("Concluído com sucesso", {
-      position: "top-right",
-      autoClose: 5000,
+  const notify = (type, message) =>
+    toast[type](message, {
+      position: "bottom-left",
+      autoClose: 1500,
       hideProgressBar: false,
       newestOnTop: false,
-      closeOnClick,
+      closeOnClick: true,
       rtl: false,
-      pauseOnFocusLoss,
-      draggable,
-      pauseOnHover,
-      theme: "light",
+      pauseOnFocusLoss: true,
+      draggable: false,
+      pauseOnHover: true,
+      theme: "dark",
     });
 
   useEffect(() => {
@@ -49,8 +51,8 @@ const Content = () => {
 
       const contentData = await api.get(`/contents/${id}`);
 
-      console.log(concludedCourses.data);
-      console.log(contentData.data);
+      //console.log(concludedCourses.data);
+      //console.log(contentData.data);
 
       concludedCourses.data.map((item) => {
         if (item.contentsId == id) {
@@ -62,6 +64,7 @@ const Content = () => {
       setDescription(contentData.data.description);
       setLink(contentData.data.link);
       setIsLoading(false);
+      setIcon(contentData.data.trail?.icon);
     }
 
     getResponse();
@@ -79,9 +82,11 @@ const Content = () => {
         config,
       );
 
-      notify();
+      notify("success", "Concluído com sucesso");
+      return setConcluded(true);
     } catch (error) {
       console.log(error);
+      notify("error", "Ocorreu um erro ao salvar curso");
     }
   };
 
@@ -91,9 +96,10 @@ const Content = () => {
 
   return (
     <S.Container>
+      <Header />
       <ToastContainer />
       <S.Header>
-        <S.Img src={Orange} />
+        <S.Img src={icon} />
         <S.Title>{title}</S.Title>
       </S.Header>
       <S.Content>

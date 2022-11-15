@@ -5,8 +5,8 @@ const ContentItem = (props) => {
   return (
     <S.Container>
       <S.LinkContainer to={props.to}>
-        <S.ImgLink src={ContentIcon} />
-        <S.TitleLink>{props.title}</S.TitleLink>
+        <S.ImgLink src={props.icon ? props.icon : ContentIcon} />
+        <S.TitleLink>{props.trail}</S.TitleLink>
       </S.LinkContainer>
       <S.DescriptionContent>
         <S.TitleDescriptionContent>{props.title}</S.TitleDescriptionContent>
