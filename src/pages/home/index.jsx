@@ -40,7 +40,6 @@ const Home = () => {
           </S.ViewTrails>
         </S.TrailsSection>
       </S.ContentSection>
-      <S.CalendarSection>Calendário</S.CalendarSection>
     </S.Container>
   );
 };
