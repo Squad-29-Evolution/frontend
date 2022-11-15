@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 const Container = styled.div`
   width: 100%;
   max-width: 600px;
@@ -46,8 +45,28 @@ const WrapperGeneric = styled.div`
     outline: none;
     border-radius: 10px;
     background: #2e2e2ea3;
-    border: 2px solid #fff;
+    border: 2px solid #e5e5e5;
   }
+`;
+
+const Description = styled.textarea`
+  outline: none;
+  border-radius: 10px;
+  background: #2e2e2ea3;
+  border: 2px solid #e5e5e5;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 5px;
+  color: #e5e5e5;
+  height: 110px;
+`;
+
+const Label = styled.label`
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
 `;
 
 const WrapperButton = styled.div`
@@ -86,4 +105,6 @@ export default {
   Form,
   WrapperButton,
   SpanError,
+  Description,
+  Label,
 };

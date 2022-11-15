@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    name: yup
+    title: yup
       .string()
       .required("Esse campo é obrigatório")
       .min(2, "Mínimo de 2 caracteres")
@@ -12,17 +12,14 @@ const schema = yup
       .string()
       .required("Esse campo é obrigatório")
       .min(5, "Mínimo de 5 caracteres")
-      .max(150, "O tamanho máximo é 150 caracteres"),
+      .max(1000, "O tamanho máximo é 1000 caracteres"),
 
-    hours: yup
-      .number()
-      .required("Esse campo é obrigatório")
-      .max(50, "Tamanho máximo de 5"),
-
-    icon: yup
+    link: yup
       .string()
       .required("Esse campo é obrigatório")
       .url("Informe uma url válida"),
+
+    category: yup.string().required("Esse campo é obrigatório"),
   })
   .required();
 

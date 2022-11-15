@@ -64,8 +64,7 @@ const Modal = ({ closeModal, setData, notify, token }) => {
   }, []);
 
   const onSubmit = async (formData) => {
-    //setIsLoading(true);
-    console.log(errors);
+    setIsLoading(true);
 
     const trail_id = parseInt(formData.trail);
     const category_id = parseInt(formData.category);
@@ -78,13 +77,13 @@ const Modal = ({ closeModal, setData, notify, token }) => {
       };
       const { data } = await api.post("/contents/create", newData, config);
       console.log(data);
-      //const { name, description, hours, icon, id } = data;
-      //setData((prev) => [...prev, { name, description, hours, icon, id }]);
+      setData((prev) => [...prev, { ...data }]);
       notify("success", "Conteudo adicionada com sucesso");
-      //return closeModal();
+      return closeModal();
     } catch (error) {
       console.log(error);
       notify("error", "Ocorreu um error ao criar conteudo");
+      setIsLoading(false);
     }
   };
 

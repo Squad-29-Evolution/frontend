@@ -5,11 +5,11 @@ import { useState } from "react";
 const Table = ({ data, setData, notify, token }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
-  const [localTrail, setLocalTrail] = useState({});
+  const [localContent, setLocalContent] = useState({});
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = (data) => {
-    setLocalTrail(data);
+    setLocalContent(data);
     setIsOpenModal(true);
   };
 
@@ -22,7 +22,7 @@ const Table = ({ data, setData, notify, token }) => {
         <Modal
           closeModal={closeModal}
           setData={setData}
-          localTrail={localTrail}
+          localContent={localContent}
           notify={notify}
           token={token}
         />
