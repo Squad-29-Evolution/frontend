@@ -12,6 +12,13 @@ const Container = styled(Link)`
   align-items: center;
   justify-content: space-around;
   text-decoration: none;
+  overflow: hidden;
+  padding: 5px 0;
+
+  @media (max-width: 530px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const Icon = styled.img`
@@ -23,6 +30,9 @@ const Title = styled.p`
   font-size: 1.25rem;
   font-family: "Metropolis", sans-serif;
   color: #f1f1f1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export default {

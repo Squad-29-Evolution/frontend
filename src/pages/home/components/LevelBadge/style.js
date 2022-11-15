@@ -61,6 +61,7 @@ const TextInstructionLevel = styled.p`
   font-family: "Metropolis", sans-serif;
   color: #f1f1f1;
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 const IconStar = styled.img`

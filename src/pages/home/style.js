@@ -32,6 +32,10 @@ const HeaderCoursesSection = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
 `;
 
 const TitleHeader = styled.h1`
@@ -42,6 +46,7 @@ const TitleHeader = styled.h1`
 
   @media (max-width: 530px) {
     text-align: center;
+    font-size: 1.5rem;
   }
 `;
 
@@ -54,6 +59,10 @@ const LinkHeaderCoursesSection = styled(Link)`
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 530px) {
+    margin-top: 15px;
   }
 `;
 
@@ -69,7 +78,7 @@ const ViewCourses = styled.div`
   gap: 15px;
 
   @media (max-width: 530px) {
-    flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -83,12 +92,13 @@ const TrailsSection = styled.section`
 const ViewTrails = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 10px;
   gap: 15px;
 
   @media (max-width: 530px) {
-    flex-direction: column;
+    justify-content: center;
   }
 `;
 
