@@ -115,10 +115,13 @@ const ButtonConcluded = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #ff8408 0%, #ff5c23 100%);
+  background: ${(props) =>
+    props.concluded
+      ? "#505050"
+      : "linear-gradient(180deg, #ff8408 0%, #ff5c23 100%)"};
   border-radius: 5px;
   align-self: center;
-  cursor: pointer;
+  cursor: ${(props) => (props.concluded ? "default" : "pointer")};
 `;
 
 const TextButtonConcluded = styled.p`

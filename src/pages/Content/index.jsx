@@ -27,12 +27,14 @@ const Content = () => {
   const notify = () =>
     toast.error("Concluído com sucesso", {
       position: "top-right",
-      autoClose: 1800,
+      autoClose: 5000,
       hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      newestOnTop: false,
+      closeOnClick,
+      rtl: false,
+      pauseOnFocusLoss,
+      draggable,
+      pauseOnHover,
       theme: "light",
     });
 
@@ -44,6 +46,7 @@ const Content = () => {
         `/getallconcludedcourse/${user.id}&${trail_id}`,
         config,
       );
+
       const contentData = await api.get(`/contents/${id}`);
 
       console.log(concludedCourses.data);
@@ -70,8 +73,8 @@ const Content = () => {
         "/salveconcludedcourse",
         {
           user_id: user.id,
-          trail_id: trail_id,
-          content_id: id,
+          trail_id: parseInt(trail_id),
+          content_id: parseInt(id),
         },
         config,
       );
@@ -117,6 +120,7 @@ const Content = () => {
         <S.ButtonConcluded
           onClick={setConcludedContent}
           disabled={concluded == true ? true : false}
+          concluded={concluded}
         >
           <S.TextButtonConcluded>
             {concluded == true ? "Já concluído" : "Concluído"}

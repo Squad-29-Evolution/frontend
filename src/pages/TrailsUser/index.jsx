@@ -55,13 +55,7 @@ const TrailsUser = () => {
         <S.TitleTrailsSection>Trilhas</S.TitleTrailsSection>
         {trails.map((item) => {
           return (
-            <TrailItem
-              key={item.id}
-              to={`/courses/${item.id}`}
-              percent={item.percent}
-              title={item.name}
-              img={item.icon}
-            />
+            <TrailItem key={item.id} trail={item} to={`/courses/${item.id}`} />
           );
         })}
       </S.TrailsSection>
