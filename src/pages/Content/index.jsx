@@ -1,5 +1,5 @@
 import S from "./style";
-import Code from "../../assets/code.svg";
+import Orange from "../../assets/logo_orange.svg";
 import Link from "../../assets/link.svg";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -90,7 +90,7 @@ const Content = () => {
     <S.Container>
       <ToastContainer />
       <S.Header>
-        <S.Img src={Code} />
+        <S.Img src={Orange} />
         <S.Title>{title}</S.Title>
       </S.Header>
       <S.Content>
@@ -98,9 +98,9 @@ const Content = () => {
         <S.Description>{description}</S.Description>
         <S.Table>
           <thead>
-            <tr>
+            <S.TRTable>
               <S.HeaderTable>Links</S.HeaderTable>
-            </tr>
+            </S.TRTable>
           </thead>
           <tbody>
             <tr>

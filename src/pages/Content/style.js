@@ -40,6 +40,7 @@ const Title = styled.h1`
   font-family: "Metropolis", sans-serif;
   font-weight: 700;
   color: #e5e5e5;
+  text-align: center;
 `;
 
 const TitleDescription = styled.h2`
@@ -63,6 +64,7 @@ const Table = styled.table`
   border: 2px solid #bfbfbf;
   margin: 20px 0 41px 0;
   background: rgba(85, 85, 85, 0.87);
+  table-layout: fixed;
 `;
 
 const HeaderTable = styled.th`
@@ -79,6 +81,13 @@ const ContentTable = styled.td`
   display: flex;
   align-items: center;
   border-top: 2px solid #bfbfbf;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+const TRTable = styled.tr`
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ImgLink = styled.img`
@@ -92,6 +101,8 @@ const TextContentTable = styled.a`
   font-family: "Metropolis", sans-serif;
   color: #e5e5e5;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     text-decoration: underline;
@@ -128,6 +139,7 @@ export default {
   Table,
   HeaderTable,
   ContentTable,
+  TRTable,
   ImgLink,
   TextContentTable,
   ButtonConcluded,
