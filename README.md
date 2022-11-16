@@ -34,13 +34,6 @@ Consiste em uma aplicação web voltada à formação educacional das pessoas na
 
 <br>
 
-## 📷 Algumas fotos
-
-
-### Login e Cadastro
-
-
-
 ## 📚 Tecnologias utilizadas
 
 <ul>
